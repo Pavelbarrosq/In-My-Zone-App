@@ -2,6 +2,9 @@
 <Workspace
    version = "1.0">
    <FileRef
+      location = "group:/Users/pavelbarrosquintanilla/Xcode/App Development/InMyZoneApp/InMyZoneApp/View/Main.storyboard">
+   </FileRef>
+   <FileRef
       location = "group:InMyZoneApp.xcodeproj">
    </FileRef>
    <FileRef

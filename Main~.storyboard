@@ -13,7 +13,6 @@
         <!--Search-->
         <scene sceneID="Vbb-nu-8hk">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="wgw-dj-CK5" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController id="gGJ-ra-gfJ" customClass="SearchViewController" customModule="InMyZoneApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="A7p-ja-LSk">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
@@ -23,13 +22,13 @@
                     </view>
                     <navigationItem key="navigationItem" title="Search" id="4Hg-lp-B5H"/>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="wgw-dj-CK5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2391.1999999999998" y="-738.17733990147781"/>
         </scene>
         <!--Camera-->
         <scene sceneID="sBS-oN-OHB">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="SNS-uz-8Yo" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController id="SOj-35-RIh" customClass="CameraViewController" customModule="InMyZoneApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="0TP-WZ-XUX">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
@@ -39,13 +38,13 @@
                     </view>
                     <navigationItem key="navigationItem" title="Camera" id="dgw-9f-fpQ"/>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="SNS-uz-8Yo" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2391.1999999999998" y="25.862068965517242"/>
         </scene>
         <!--Notifications-->
         <scene sceneID="2Pc-YP-WJW">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="yOj-GV-CPW" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController id="afm-nL-yHU" customClass="NotificationViewController" customModule="InMyZoneApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="X7J-ff-LNT">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
@@ -55,13 +54,13 @@
                     </view>
                     <navigationItem key="navigationItem" title="Notifications" id="u1l-iQ-mkQ"/>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="yOj-GV-CPW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2391.1999999999998" y="782.51231527093603"/>
         </scene>
         <!--Profile-->
         <scene sceneID="Dvu-Jd-QXc">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="LQa-nn-gjT" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController id="jad-hP-Peg" customClass="ProfileViewController" customModule="InMyZoneApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="VrV-1l-TLN">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
@@ -71,13 +70,13 @@
                     </view>
                     <navigationItem key="navigationItem" title="Profile" id="x4g-ll-0Cs"/>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="LQa-nn-gjT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2391.1999999999998" y="1481.5270935960591"/>
         </scene>
         <!--Feed-->
         <scene sceneID="JIz-uD-Y3X">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="4MN-zK-PY7" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController id="wE3-g3-RQJ" customClass="HomeViewController" customModule="InMyZoneApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="n7V-jG-T5m">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
@@ -87,6 +86,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="Feed" id="UCG-u9-oH3"/>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="4MN-zK-PY7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2391.1999999999998" y="-1496.305418719212"/>
         </scene>
@@ -297,7 +297,6 @@
         <!--Tab Bar Controller-->
         <scene sceneID="Cjp-wX-LO5">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Co0-fX-KDZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <tabBarController id="73G-C9-hWW" sceneMemberID="viewController">
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="TjM-LN-phT">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
@@ -312,13 +311,13 @@
                         <segue destination="SNw-EN-shf" kind="relationship" relationship="viewControllers" id="PNP-sb-FUr"/>
                     </connections>
                 </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Co0-fX-KDZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="364" y="26"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="FHt-Zx-QbW">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="P7Y-dD-TCH" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="R2S-Q7-VpY" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="" image="home" selectedImage="homeFilled" id="21b-3s-EKi">
                         <inset key="imageInsets" minX="0.0" minY="5" maxX="0.0" maxY="-5"/>
@@ -333,13 +332,13 @@
                         <segue destination="wE3-g3-RQJ" kind="relationship" relationship="rootViewController" id="Wum-V6-YWV"/>
                     </connections>
                 </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="P7Y-dD-TCH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1448.8" y="-1496.305418719212"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="MMS-z1-YFe">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="48W-xI-UbR" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="DCn-kG-eao" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="" image="search" selectedImage="searchFilled" id="rrE-K8-Woz">
                         <inset key="imageInsets" minX="0.0" minY="5" maxX="0.0" maxY="-5"/>
@@ -354,13 +353,13 @@
                         <segue destination="gGJ-ra-gfJ" kind="relationship" relationship="rootViewController" id="zAw-pC-80g"/>
                     </connections>
                 </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="48W-xI-UbR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1448.8" y="-738.17733990147781"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="zJg-he-2ww">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="DKm-ON-t6R" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="5f9-nu-pUn" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="" image="camera" selectedImage="cameraFilled" id="UyP-gH-UCe">
                         <inset key="imageInsets" minX="0.0" minY="5" maxX="0.0" maxY="-5"/>
@@ -375,13 +374,13 @@
                         <segue destination="SOj-35-RIh" kind="relationship" relationship="rootViewController" id="wOO-Ru-zx2"/>
                     </connections>
                 </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="DKm-ON-t6R" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1448.8" y="25.862068965517242"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="gOR-fY-yCW">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="8tv-oH-6PA" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="2uv-IG-6ee" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="" image="notification" selectedImage="notificationFilled" id="edR-Gp-dtH">
                         <inset key="imageInsets" minX="0.0" minY="5" maxX="0.0" maxY="-5"/>
@@ -396,16 +395,16 @@
                         <segue destination="afm-nL-yHU" kind="relationship" relationship="rootViewController" id="HIa-9H-NPU"/>
                     </connections>
                 </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="8tv-oH-6PA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1448.8" y="782.51231527093603"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="k26-KX-Oto">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="GZG-x7-zbO" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="SNw-EN-shf" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="" image="profile" selectedImage="profileFilled" id="0O4-kf-q53">
-                        <inset key="imageInsets" minX="0.0" minY="5" maxX="-2" maxY="-5"/>
+                        <inset key="imageInsets" minX="0.0" minY="5" maxX="-1" maxY="-5"/>
                     </tabBarItem>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="2wR-aL-kyj">
@@ -417,6 +416,7 @@
                         <segue destination="jad-hP-Peg" kind="relationship" relationship="rootViewController" id="I6E-eC-xzk"/>
                     </connections>
                 </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="GZG-x7-zbO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1448.8" y="1481.5270935960591"/>
         </scene>
@@ -434,6 +434,6 @@
         <image name="searchFilled" width="16.666666030883789" height="16.666666030883789"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="BTv-b8-Qd6"/>
+        <segue reference="SfI-jl-K8l"/>
     </inferredMetricsTieBreakers>
 </document>
