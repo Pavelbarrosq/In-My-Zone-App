@@ -10,6 +10,7 @@
 		4032A775E0E5129DBD77F604 /* Pods_InMyZoneAppUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 50D177E110E11EA4BFEB8258 /* Pods_InMyZoneAppUITests.framework */; };
 		4AACC642741365071D9FCACE /* Pods_InMyZoneApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7FCD3C8032854678119661F3 /* Pods_InMyZoneApp.framework */; };
 		9808459030E7816AD837BE1C /* Pods_InMyZoneAppTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4E515DE0303E467DF145EB96 /* Pods_InMyZoneAppTests.framework */; };
+		CD36835322380AE700EF0C28 /* Navigation.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CD36835222380AE700EF0C28 /* Navigation.storyboard */; };
 		CD8E4EF52232D26B006FE2E6 /* StartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD8E4EF42232D26B006FE2E6 /* StartViewController.swift */; };
 		CD8E4EF72232D27B006FE2E6 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD8E4EF62232D27B006FE2E6 /* SignUpViewController.swift */; };
 		CD8E4EF92232D283006FE2E6 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD8E4EF82232D283006FE2E6 /* LoginViewController.swift */; };
@@ -54,6 +55,7 @@
 		7FCD3C8032854678119661F3 /* Pods_InMyZoneApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_InMyZoneApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A7BA144BBED49C658FDC4CCA /* Pods-InMyZoneAppTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-InMyZoneAppTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-InMyZoneAppTests/Pods-InMyZoneAppTests.release.xcconfig"; sourceTree = "<group>"; };
 		C0B89AC9D2F2BD43B68BF631 /* Pods-InMyZoneAppUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-InMyZoneAppUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-InMyZoneAppUITests/Pods-InMyZoneAppUITests.release.xcconfig"; sourceTree = "<group>"; };
+		CD36835222380AE700EF0C28 /* Navigation.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Navigation.storyboard; sourceTree = "<group>"; };
 		CD8E4EF42232D26B006FE2E6 /* StartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartViewController.swift; sourceTree = "<group>"; };
 		CD8E4EF62232D27B006FE2E6 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		CD8E4EF82232D283006FE2E6 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -202,6 +204,7 @@
 			isa = PBXGroup;
 			children = (
 				CDDABDD1223173010069BB9C /* Main.storyboard */,
+				CD36835222380AE700EF0C28 /* Navigation.storyboard */,
 				CDDABDD6223173010069BB9C /* LaunchScreen.storyboard */,
 				CDDABDD4223173010069BB9C /* Assets.xcassets */,
 			);
@@ -326,6 +329,7 @@
 			files = (
 				CDDABDD8223173010069BB9C /* LaunchScreen.storyboard in Resources */,
 				CD8E4EFB2232DE6B006FE2E6 /* GoogleService-Info.plist in Resources */,
+				CD36835322380AE700EF0C28 /* Navigation.storyboard in Resources */,
 				CDDABDD5223173010069BB9C /* Assets.xcassets in Resources */,
 				CDDABDD3223173010069BB9C /* Main.storyboard in Resources */,
 			);
