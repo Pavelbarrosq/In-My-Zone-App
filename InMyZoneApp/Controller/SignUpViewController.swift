@@ -11,6 +11,7 @@ import Firebase
 
 class SignUpViewController: UIViewController {
 
+    @IBOutlet weak var usernameTextField: UITextField!
     @IBOutlet weak var emailTextfield: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var repeatPassword: UITextField!
@@ -18,8 +19,43 @@ class SignUpViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        
+        let bottomlayerUsername = CALayer()
+        bottomlayerUsername.frame = CGRect(x: 0, y:29, width: usernameTextField.frame.width, height: 0.6)
+        bottomlayerUsername.backgroundColor = UIColor.init(red: 50/255, green: 50/255, blue: 25/255, alpha: 1).cgColor
+        
+        usernameTextField.backgroundColor = UIColor.clear
+        usernameTextField.tintColor = UIColor.white
+        usernameTextField.textColor = UIColor.white
+        usernameTextField.layer.addSublayer(bottomlayerUsername)
+        
+        let bottomlayerEmail = CALayer()
+        bottomlayerEmail.frame = CGRect(x: 0, y:29, width: emailTextfield.frame.width, height: 0.6)
+        bottomlayerEmail.backgroundColor = UIColor.init(red: 50/255, green: 50/255, blue: 25/255, alpha: 1).cgColor
+        
+        emailTextfield.backgroundColor = UIColor.clear
+        emailTextfield.tintColor = UIColor.white
+        emailTextfield.textColor = UIColor.white
+        emailTextfield.layer.addSublayer(bottomlayerEmail)
+        
+        let bottomlayerPassword = CALayer()
+        bottomlayerPassword.frame = CGRect(x: 0, y:29, width: passwordTextField.frame.width, height: 0.6)
+        bottomlayerPassword.backgroundColor = UIColor.init(red: 50/255, green: 50/255, blue: 25/255, alpha: 1).cgColor
+        
+        passwordTextField.backgroundColor = UIColor.clear
+        passwordTextField.tintColor = UIColor.white
+        passwordTextField.textColor = UIColor.white
+        passwordTextField.layer.addSublayer(bottomlayerPassword)
+        
+        let bottomlayerPassword2 = CALayer()
+        bottomlayerPassword2.frame = CGRect(x: 0, y:29, width: repeatPassword.frame.width, height: 0.6)
+        bottomlayerPassword2.backgroundColor = UIColor.init(red: 50/255, green: 50/255, blue: 25/255, alpha: 1).cgColor
+        
+        repeatPassword.backgroundColor = UIColor.clear
+        repeatPassword.tintColor = UIColor.white
+        repeatPassword.textColor = UIColor.white
+        repeatPassword.layer.addSublayer(bottomlayerPassword2)
+        
     }
     
 

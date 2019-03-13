@@ -13,23 +13,34 @@ class LoginViewController: UIViewController {
 
     @IBOutlet weak var email: UITextField!
     @IBOutlet weak var password: UITextField!
+    @IBOutlet weak var profileImage: UIImageView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        email.backgroundColor = UIColor.clear
+        email.tintColor = UIColor.white
+        email.textColor = UIColor.white
+        email.attributedPlaceholder = NSAttributedString(string: email.placeholder!, attributes: [NSAttributedString.Key.foregroundColor : UIColor(white: 1.0, alpha: 0.6)])
+        let bottomLayerEmail = CALayer()
+        bottomLayerEmail.frame = CGRect(x: 0, y: 29, width: email.frame.width, height: 0.6)
+        bottomLayerEmail.backgroundColor = UIColor(red: 50/255, green: 50/255, blue: 25/255, alpha: 1).cgColor
+        email.layer.addSublayer(bottomLayerEmail)
+        
+        password.backgroundColor = UIColor.clear
+        password.tintColor = UIColor.white
+        password.textColor = UIColor.white
+        password.attributedPlaceholder = NSAttributedString(string: password.placeholder!, attributes: [NSAttributedString.Key.foregroundColor : UIColor(white: 1.0, alpha: 0.6)])
+        let bottomLayerPassword = CALayer()
+        bottomLayerPassword.frame = CGRect(x: 0, y: 29, width: password.frame.width, height: 0.6)
+        bottomLayerPassword.backgroundColor = UIColor(red: 50/255, green: 50/255, blue: 25/255, alpha: 1).cgColor
+        password.layer.addSublayer(bottomLayerPassword)
+        
+        profileImage.layer.cornerRadius = 55
+        profileImage.clipsToBounds = true
+        
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
     @IBAction func loginButton(_ sender: UIButton) {
         
         Auth.auth().signIn(withEmail: email.text!, password: password.text!) { (user, error) in
@@ -45,8 +56,6 @@ class LoginViewController: UIViewController {
                 
                 alertController.addAction(alertAction)
                 self.present(alertController, animated: true, completion: nil)
-                
-                
                 
             }
             
