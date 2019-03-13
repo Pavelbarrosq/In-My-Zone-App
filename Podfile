@@ -8,6 +8,7 @@ target 'InMyZoneApp' do
   # Pods for InMyZoneApp
 pod 'Firebase/Core'
 pod 'Firebase/Auth'
+pod 'Firebase/Database'
 
   target 'InMyZoneAppTests' do
     inherit! :search_paths
