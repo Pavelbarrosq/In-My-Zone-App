@@ -45,8 +45,6 @@ class LoginViewController: UIViewController {
     @IBAction func loginButton(_ sender: UIButton) {
         
         Auth.auth().signIn(withEmail: email.text!, password: password.text!) { (user, error) in
-            let ref = Database.database().reference()
-            print(ref.description())
             
             if error == nil {
                 

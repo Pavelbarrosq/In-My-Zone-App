@@ -73,9 +73,18 @@ class SignUpViewController: UIViewController {
         }   else {
             
                 Auth.auth().createUser(withEmail: emailTextfield.text!, password: passwordTextField.text!) { (user, error) in
+                    
                 
                 if error == nil {
                     
+                    let ref = Database.database().reference()
+                    let userRef = ref.child("users")
+                    
+                    let userID = Auth.auth().currentUser?.uid
+                    let newUserRef = userRef.child(userID!)
+                    newUserRef.setValue(["username": self.usernameTextField.text!, "email": self.emailTextfield.text!])
+                    print("descrition \(newUserRef.description())")
+            
                     self.performSegue(withIdentifier: "signUpToHome", sender: self)
                     
                 }   else {
