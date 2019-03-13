@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina5_9" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Feed-->
+        <scene sceneID="JIz-uD-Y3X">
+            <objects>
+                <viewController id="wE3-g3-RQJ" customClass="HomeViewController" customModule="InMyZoneApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="n7V-jG-T5m">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="NCz-8C-43V"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Feed" id="UCG-u9-oH3"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="4MN-zK-PY7" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1682" y="-6"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="FHt-Zx-QbW">
+            <objects>
+                <navigationController storyboardIdentifier="NavigationToFeed" automaticallyAdjustsScrollViewInsets="NO" id="R2S-Q7-VpY" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="" image="home" selectedImage="homeFilled" id="21b-3s-EKi">
+                        <inset key="imageInsets" minX="0.0" minY="5" maxX="0.0" maxY="-5"/>
+                    </tabBarItem>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="hKn-8u-FH7">
+                        <rect key="frame" x="0.0" y="44" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="wE3-g3-RQJ" kind="relationship" relationship="rootViewController" id="Wum-V6-YWV"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="P7Y-dD-TCH" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1682" y="-738"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="home" width="16.666666030883789" height="16.666666030883789"/>
+        <image name="homeFilled" width="16.666666030883789" height="16.666666030883789"/>
+    </resources>
+</document>

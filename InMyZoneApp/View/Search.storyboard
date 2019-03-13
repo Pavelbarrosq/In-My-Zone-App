@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina5_9" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Search-->
+        <scene sceneID="Vbb-nu-8hk">
+            <objects>
+                <viewController id="gGJ-ra-gfJ" customClass="SearchViewController" customModule="InMyZoneApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="A7p-ja-LSk">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="A27-l5-iU4"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Search" id="4Hg-lp-B5H"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="wgw-dj-CK5" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-703" y="-7"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="MMS-z1-YFe">
+            <objects>
+                <navigationController storyboardIdentifier="NavigationToSearch" automaticallyAdjustsScrollViewInsets="NO" id="DCn-kG-eao" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="" image="search" selectedImage="searchFilled" id="rrE-K8-Woz">
+                        <inset key="imageInsets" minX="0.0" minY="5" maxX="0.0" maxY="-5"/>
+                    </tabBarItem>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Owc-fb-UxD">
+                        <rect key="frame" x="0.0" y="44" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="gGJ-ra-gfJ" kind="relationship" relationship="rootViewController" id="zAw-pC-80g"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="48W-xI-UbR" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-702" y="-738"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="search" width="16.666666030883789" height="16.666666030883789"/>
+        <image name="searchFilled" width="16.666666030883789" height="16.666666030883789"/>
+    </resources>
+</document>

@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina5_9" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Camera-->
+        <scene sceneID="sBS-oN-OHB">
+            <objects>
+                <viewController id="SOj-35-RIh" customClass="CameraViewController" customModule="InMyZoneApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="0TP-WZ-XUX">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="1xe-LH-tyr"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Camera" id="dgw-9f-fpQ"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="SNS-uz-8Yo" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="292" y="-7"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="zJg-he-2ww">
+            <objects>
+                <navigationController storyboardIdentifier="NavigationToCamera" automaticallyAdjustsScrollViewInsets="NO" id="5f9-nu-pUn" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="" image="camera" selectedImage="cameraFilled" id="UyP-gH-UCe">
+                        <inset key="imageInsets" minX="0.0" minY="5" maxX="0.0" maxY="-5"/>
+                    </tabBarItem>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="s6S-H8-eJa">
+                        <rect key="frame" x="0.0" y="44" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="SOj-35-RIh" kind="relationship" relationship="rootViewController" id="wOO-Ru-zx2"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="DKm-ON-t6R" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="292" y="-738"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="camera" width="16.666666030883789" height="16.666666030883789"/>
+        <image name="cameraFilled" width="16.666666030883789" height="16.666666030883789"/>
+    </resources>
+</document>
