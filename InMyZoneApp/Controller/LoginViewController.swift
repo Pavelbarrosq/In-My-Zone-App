@@ -18,6 +18,12 @@ class LoginViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let fadeBackground = CAGradientLayer()
+        fadeBackground.frame = view.bounds
+        fadeBackground.colors = [UIColor.init(red: 148/255, green: 55/255, blue: 255/255, alpha: 1).cgColor, UIColor.black.cgColor, UIColor.black.cgColor, UIColor.init(red: 148/255, green: 55/255, blue: 255/255, alpha: 1).cgColor]
+        fadeBackground.locations = [0, 0.2, 0.8, 1]
+        view.layer.insertSublayer(fadeBackground, at: 0)
 
         email.backgroundColor = UIColor.clear
         email.tintColor = UIColor.white

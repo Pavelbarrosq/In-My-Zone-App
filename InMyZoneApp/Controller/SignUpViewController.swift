@@ -16,10 +16,17 @@ class SignUpViewController: UIViewController {
     @IBOutlet weak var emailTextfield: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var repeatPassword: UITextField!
+    @IBOutlet weak var showPassword: UIButton!
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let fadeBackground = CAGradientLayer()
+        fadeBackground.frame = view.bounds
+        fadeBackground.colors = [UIColor.init(red: 148/255, green: 55/255, blue: 255/255, alpha: 1).cgColor, UIColor.black.cgColor, UIColor.black.cgColor, UIColor.init(red: 148/255, green: 55/255, blue: 255/255, alpha: 1).cgColor]
+        fadeBackground.locations = [0, 0.2, 0.8, 1]
+        view.layer.insertSublayer(fadeBackground, at: 0)
         
         let bottomlayerUsername = CALayer()
         bottomlayerUsername.frame = CGRect(x: 0, y:29, width: usernameTextField.frame.width, height: 0.6)
@@ -105,6 +112,25 @@ class SignUpViewController: UIViewController {
     @IBAction func backButton(_ sender: UIButton) {
         
         self.dismiss(animated: true, completion: nil)
+        
+    }
+    @IBAction func showPasswordButton(_ sender: UIButton) {
+        
+        if passwordTextField.isSecureTextEntry == true {
+            
+            passwordTextField.isSecureTextEntry = false
+            repeatPassword.isSecureTextEntry = false
+            
+            showPassword.setTitle("Hide", for: .normal)
+            
+        }   else {
+            
+            passwordTextField.isSecureTextEntry = true
+            repeatPassword.isSecureTextEntry = true
+            
+            showPassword.setTitle("Show", for: .normal)
+            
+        }
         
     }
 }
