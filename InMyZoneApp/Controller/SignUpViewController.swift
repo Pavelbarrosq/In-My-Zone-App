@@ -17,6 +17,7 @@ class SignUpViewController: UIViewController {
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var repeatPassword: UITextField!
     @IBOutlet weak var showPassword: UIButton!
+    @IBOutlet weak var signInButton: UIButton!
     
     
     override func viewDidLoad() {
@@ -64,8 +65,37 @@ class SignUpViewController: UIViewController {
         repeatPassword.textColor = UIColor.white
         repeatPassword.layer.addSublayer(bottomlayerPassword2)
         
+        textFieldsChange()
+        
+        signInButton.setTitleColor(UIColor.lightText, for: .normal)
+        
     }
     
+    @objc func textFieldsChange() {
+        
+        usernameTextField.addTarget(self, action: #selector(SignUpViewController.textFieldsCheck), for: UIControl.Event.editingChanged)
+        emailTextfield.addTarget(self, action: #selector(SignUpViewController.textFieldsCheck), for: UIControl.Event.editingChanged)
+        passwordTextField.addTarget(self, action: #selector(SignUpViewController.textFieldsCheck), for: UIControl.Event.editingChanged)
+        repeatPassword.addTarget(self, action: #selector(SignUpViewController.textFieldsCheck), for: UIControl.Event.editingChanged)
+        
+    }
+    
+    @objc func textFieldsCheck() {
+        
+        guard let username = usernameTextField.text, !username.isEmpty, let email = emailTextfield.text, !email.isEmpty, let password = passwordTextField.text, !password.isEmpty, let password2 = repeatPassword.text, !password2.isEmpty else {
+            
+            signInButton.setTitleColor(UIColor.lightText, for: .normal)
+            signInButton.isEnabled = false
+            return
+            
+        }
+        
+        signInButton.setTitleColor(UIColor(red: 148/255, green: 55/255, blue: 255/255, alpha: 1), for: .normal)
+        signInButton.isEnabled = true
+        
+    }
+
+        
 
     @IBAction func signUpButton(_ sender: UIButton) {
         
@@ -84,8 +114,9 @@ class SignUpViewController: UIViewController {
                 
                 if error == nil {
                     
+                    // push user to Firebase/Database
                     let ref = Database.database().reference()
-                    let userRef = ref.child("users")
+                    let userRef = ref.child("users") // child recefence in the http site.com/users
                     
                     let userID = Auth.auth().currentUser?.uid
                     let newUserRef = userRef.child(userID!)

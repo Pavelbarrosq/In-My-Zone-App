@@ -14,10 +14,12 @@ class LoginViewController: UIViewController {
 
     @IBOutlet weak var email: UITextField!
     @IBOutlet weak var password: UITextField!
-    @IBOutlet weak var profileImage: UIImageView!
+    @IBOutlet weak var loginButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        loginButton.setTitleColor(UIColor.lightText, for: .normal)
         
         let fadeBackground = CAGradientLayer()
         fadeBackground.frame = view.bounds
@@ -43,8 +45,27 @@ class LoginViewController: UIViewController {
         bottomLayerPassword.backgroundColor = UIColor(red: 50/255, green: 50/255, blue: 25/255, alpha: 1).cgColor
         password.layer.addSublayer(bottomLayerPassword)
         
-        profileImage.layer.cornerRadius = 55
-        profileImage.clipsToBounds = true
+        textFieldHandeler()
+        
+    }
+    
+    func textFieldHandeler() {
+        
+        email.addTarget(self, action: #selector(LoginViewController.textFieldsFilled), for: UIControl.Event.editingChanged)
+        password.addTarget(self, action: #selector(LoginViewController.textFieldsFilled), for: UIControl.Event.editingChanged)
+        
+    }
+    
+    @objc func textFieldsFilled() {
+        
+        guard let email = email.text, !email.isEmpty, let password = password.text, !password.isEmpty else {
+            loginButton.setTitleColor(UIColor.lightText, for: .normal)
+            loginButton.isEnabled = false
+            return
+        }
+        
+        loginButton.setTitleColor(UIColor(red: 148/255, green: 55/255, blue: 255/255, alpha: 1), for: .normal)
+        loginButton.isEnabled = true
         
     }
     

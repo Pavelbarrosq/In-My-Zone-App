@@ -132,9 +132,7 @@
                                 <rect key="frame" x="16" y="625" width="343" height="50"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="AvenirNext-Bold" family="Avenir Next" pointSize="22"/>
-                                <state key="normal" title="SignUp">
-                                    <color key="titleColor" red="0.58188301320000002" green="0.21569153669999999" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                </state>
+                                <state key="normal" title="SignUp"/>
                                 <connections>
                                     <action selector="signUpButton:" destination="NIG-oB-4Cz" eventType="touchUpInside" id="bDT-VV-SXR"/>
                                 </connections>
@@ -162,7 +160,7 @@
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="Hvs-0g-WJs"/>
                     </view>
                     <connections>
@@ -170,6 +168,7 @@
                         <outlet property="passwordTextField" destination="FwU-eU-U42" id="PPn-zI-WYq"/>
                         <outlet property="repeatPassword" destination="Yhn-lR-5Ln" id="DOI-rh-Ukc"/>
                         <outlet property="showPassword" destination="vAv-sP-eqm" id="VHp-qL-8Rw"/>
+                        <outlet property="signInButton" destination="bzj-Yu-BEi" id="oid-kS-RCJ"/>
                         <outlet property="usernameTextField" destination="Rzl-DX-L8n" id="5LK-pB-kJl"/>
                         <segue destination="R7K-cp-zdu" kind="show" identifier="signUpToHome" id="BTv-b8-Qd6"/>
                     </connections>
@@ -222,18 +221,14 @@
                                     <action selector="backButton:" destination="v33-WD-PqK" eventType="touchUpInside" id="i0r-Js-oa2"/>
                                 </connections>
                             </button>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="profilePlaceholder" translatesAutoresizingMaskIntoConstraints="NO" id="Tjs-ap-UrM">
-                                <rect key="frame" x="132" y="157" width="110" height="110"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
                         </subviews>
-                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="QyO-yV-Sqh"/>
                     </view>
                     <connections>
                         <outlet property="email" destination="xze-tc-LqZ" id="7ER-XW-Zdt"/>
+                        <outlet property="loginButton" destination="j6s-vi-3xQ" id="m2f-f5-eMd"/>
                         <outlet property="password" destination="1Tm-CZ-gPv" id="r4e-sI-RzI"/>
-                        <outlet property="profileImage" destination="Tjs-ap-UrM" id="8fW-8T-Zxq"/>
                         <segue destination="R7K-cp-zdu" kind="show" identifier="loginToHome" id="SfI-jl-K8l"/>
                     </connections>
                 </viewController>
@@ -252,7 +247,6 @@
     </scenes>
     <resources>
         <image name="logo_transparent" width="400" height="400"/>
-        <image name="profilePlaceholder" width="200" height="200"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="SfI-jl-K8l"/>
