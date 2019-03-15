@@ -20,7 +20,13 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="NCz-8C-43V"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Feed" id="UCG-u9-oH3"/>
+                    <navigationItem key="navigationItem" title="Feed" id="UCG-u9-oH3">
+                        <barButtonItem key="leftBarButtonItem" title="Logout" id="bz9-8o-nT0">
+                            <connections>
+                                <action selector="logoutButton:" destination="wE3-g3-RQJ" id="wyz-BQ-Mw0"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4MN-zK-PY7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

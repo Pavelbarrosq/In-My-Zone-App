@@ -13,7 +13,7 @@
         <!--Start View Controller-->
         <scene sceneID="NdP-g4-Mod">
             <objects>
-                <viewController id="OHr-xW-Cgh" customClass="StartViewController" customModule="InMyZoneApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="StartViewControllerID" id="OHr-xW-Cgh" customClass="StartViewController" customModule="InMyZoneApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="I3M-Q8-YoG">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -51,6 +51,7 @@
                     <connections>
                         <outlet property="loginButton" destination="7AL-eJ-pMO" id="PKm-Rh-Z1K"/>
                         <outlet property="signUpButton" destination="goM-To-8TF" id="fZT-m6-Y9M"/>
+                        <segue destination="R7K-cp-zdu" kind="show" identifier="StartToHome" id="XGh-6M-iLG"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2bH-0z-o0J" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -249,6 +250,6 @@
         <image name="logo_transparent" width="400" height="400"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="SfI-jl-K8l"/>
+        <segue reference="XGh-6M-iLG"/>
     </inferredMetricsTieBreakers>
 </document>

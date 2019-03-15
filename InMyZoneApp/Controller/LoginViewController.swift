@@ -19,7 +19,13 @@ class LoginViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        loginButton.isEnabled = false
         loginButton.setTitleColor(UIColor.lightText, for: .normal)
+        loginButton.backgroundColor = UIColor.clear
+        loginButton.layer.cornerRadius = 5
+        loginButton.layer.borderWidth = 2
+        loginButton.layer.borderColor = UIColor.lightText.cgColor
+        
         
         let fadeBackground = CAGradientLayer()
         fadeBackground.frame = view.bounds
@@ -45,26 +51,29 @@ class LoginViewController: UIViewController {
         bottomLayerPassword.backgroundColor = UIColor(red: 50/255, green: 50/255, blue: 25/255, alpha: 1).cgColor
         password.layer.addSublayer(bottomLayerPassword)
         
-        textFieldHandeler()
+        textFieldsChange()
         
     }
     
-    func textFieldHandeler() {
+    func textFieldsChange() {
         
-        email.addTarget(self, action: #selector(LoginViewController.textFieldsFilled), for: UIControl.Event.editingChanged)
-        password.addTarget(self, action: #selector(LoginViewController.textFieldsFilled), for: UIControl.Event.editingChanged)
+        email.addTarget(self, action: #selector(LoginViewController.textFieldsCheck), for: UIControl.Event.editingChanged)
+        password.addTarget(self, action: #selector(LoginViewController.textFieldsCheck), for: UIControl.Event.editingChanged)
         
     }
     
-    @objc func textFieldsFilled() {
+    @objc func textFieldsCheck() {
         
         guard let email = email.text, !email.isEmpty, let password = password.text, !password.isEmpty else {
+            
             loginButton.setTitleColor(UIColor.lightText, for: .normal)
-            loginButton.isEnabled = false
+            loginButton.layer.borderColor = UIColor.lightText.cgColor
+            
             return
         }
         
         loginButton.setTitleColor(UIColor(red: 148/255, green: 55/255, blue: 255/255, alpha: 1), for: .normal)
+        loginButton.layer.borderColor = UIColor.init(red: 148/255, green: 55/255, blue: 255/255, alpha: 1).cgColor
         loginButton.isEnabled = true
         
     }

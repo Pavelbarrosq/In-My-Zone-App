@@ -215,11 +215,11 @@
 			children = (
 				CDDABDD1223173010069BB9C /* Main.storyboard */,
 				CD36835222380AE700EF0C28 /* Navigation.storyboard */,
-				CD31BDCC223916B200EDAEA8 /* Profile.storyboard */,
-				CD31BDCA2239166C00EDAEA8 /* Notification.storyboard */,
-				CD31BDC82239161B00EDAEA8 /* Camera.storyboard */,
-				CD31BDC6223915EA00EDAEA8 /* Search.storyboard */,
 				CD31BDC42239154C00EDAEA8 /* Feed.storyboard */,
+				CD31BDC6223915EA00EDAEA8 /* Search.storyboard */,
+				CD31BDC82239161B00EDAEA8 /* Camera.storyboard */,
+				CD31BDCA2239166C00EDAEA8 /* Notification.storyboard */,
+				CD31BDCC223916B200EDAEA8 /* Profile.storyboard */,
 				CDDABDD6223173010069BB9C /* LaunchScreen.storyboard */,
 				CDDABDD4223173010069BB9C /* Assets.xcassets */,
 			);
