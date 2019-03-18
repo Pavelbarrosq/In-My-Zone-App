@@ -19,37 +19,15 @@ class LoginViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        Design.shared.setBackground(view: view)
+        Design.shared.setButton(button: loginButton)
         loginButton.isEnabled = false
         loginButton.setTitleColor(UIColor.lightText, for: .normal)
-        loginButton.backgroundColor = UIColor.clear
-        loginButton.layer.cornerRadius = 5
-        loginButton.layer.borderWidth = 2
-        loginButton.layer.borderColor = UIColor.lightText.cgColor
         
-        
-        let fadeBackground = CAGradientLayer()
-        fadeBackground.frame = view.bounds
-        fadeBackground.colors = [UIColor.init(red: 148/255, green: 55/255, blue: 255/255, alpha: 1).cgColor, UIColor.black.cgColor, UIColor.black.cgColor, UIColor.init(red: 148/255, green: 55/255, blue: 255/255, alpha: 1).cgColor]
-        fadeBackground.locations = [0, 0.2, 0.8, 1]
-        view.layer.insertSublayer(fadeBackground, at: 0)
-
-        email.backgroundColor = UIColor.clear
-        email.tintColor = UIColor.white
-        email.textColor = UIColor.white
+        Design.shared.textFieldDesign(textField: email)
+        Design.shared.textFieldDesign(textField: password)
         email.attributedPlaceholder = NSAttributedString(string: email.placeholder!, attributes: [NSAttributedString.Key.foregroundColor : UIColor(white: 1.0, alpha: 0.6)])
-        let bottomLayerEmail = CALayer()
-        bottomLayerEmail.frame = CGRect(x: 0, y: 29, width: email.frame.width, height: 0.6)
-        bottomLayerEmail.backgroundColor = UIColor(red: 50/255, green: 50/255, blue: 25/255, alpha: 1).cgColor
-        email.layer.addSublayer(bottomLayerEmail)
-        
-        password.backgroundColor = UIColor.clear
-        password.tintColor = UIColor.white
-        password.textColor = UIColor.white
         password.attributedPlaceholder = NSAttributedString(string: password.placeholder!, attributes: [NSAttributedString.Key.foregroundColor : UIColor(white: 1.0, alpha: 0.6)])
-        let bottomLayerPassword = CALayer()
-        bottomLayerPassword.frame = CGRect(x: 0, y: 29, width: password.frame.width, height: 0.6)
-        bottomLayerPassword.backgroundColor = UIColor(red: 50/255, green: 50/255, blue: 25/255, alpha: 1).cgColor
-        password.layer.addSublayer(bottomLayerPassword)
         
         textFieldsChange()
         
@@ -80,23 +58,19 @@ class LoginViewController: UIViewController {
     
     @IBAction func loginButton(_ sender: UIButton) {
         
-        Auth.auth().signIn(withEmail: email.text!, password: password.text!) { (user, error) in
+        AuthUtilitys.login(email: email.text!, password: password.text!, onSuccess: {
+            self.performSegue(withIdentifier: "loginToHome", sender: self)
+        }) { (error) in
+            let alertController = UIAlertController(title: "Error", message: error, preferredStyle: .alert)
+            let alertAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
             
-            if error == nil {
-                
-                self.performSegue(withIdentifier: "loginToHome", sender: self)
-                
-            }   else {
-                
-                let alertController = UIAlertController(title: "Error", message: error?.localizedDescription, preferredStyle: .alert)
-                let alertAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
-                
-                alertController.addAction(alertAction)
-                self.present(alertController, animated: true, completion: nil)
-                
-            }
-            
+            alertController.addAction(alertAction)
+            self.present(alertController, animated: true, completion: nil)
+
         }
+        
+       
+
         
     }
     
