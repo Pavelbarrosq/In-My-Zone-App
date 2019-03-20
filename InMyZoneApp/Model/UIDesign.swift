@@ -35,7 +35,7 @@ class Design {
     func textFieldDesign(textField: UITextField) {
         
         let bottomlayerUsername = CALayer()
-        bottomlayerUsername.frame = CGRect(x: 0, y:29, width: textField.frame.width, height: 0.6)
+        bottomlayerUsername.frame = CGRect(x: 0, y:45, width: textField.frame.width, height: 0.6)
         bottomlayerUsername.backgroundColor = UIColor.init(red: 50/255, green: 50/255, blue: 25/255, alpha: 1).cgColor
         
         textField.backgroundColor = UIColor.clear
