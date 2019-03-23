@@ -13,6 +13,7 @@ class RecordViewController: UIViewController, AVAudioRecorderDelegate {
 
     @IBOutlet weak var recordButtonImage: UIButton!
     @IBOutlet weak var recordingLabel: UILabel!
+    @IBOutlet weak var addDescriptionToPost: UITextView!
     
     var recordingSession: AVAudioSession!
     var audioRecorder: AVAudioRecorder!
@@ -34,8 +35,11 @@ class RecordViewController: UIViewController, AVAudioRecorderDelegate {
             }
         }
         
+    }
+    @IBAction func shareButton(_ sender: UIButton) {
         
     }
+    
     @IBAction func playButton(_ sender: UIButton) {
         listenToSession()
     }
