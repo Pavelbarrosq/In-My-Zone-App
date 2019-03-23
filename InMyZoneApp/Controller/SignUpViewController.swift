@@ -22,6 +22,7 @@ class SignUpViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.hideKeyboardWhenTappedAround() 
         
         Design.shared.setBackground(view: view)
         Design.shared.textFieldDesign(textField: usernameTextField)

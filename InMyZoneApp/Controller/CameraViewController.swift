@@ -22,6 +22,7 @@ class CameraViewController: UIViewController, AVAudioRecorderDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.hideKeyboardWhenTappedAround() 
         
         recordingSession = AVAudioSession.sharedInstance()
         
@@ -32,6 +33,9 @@ class CameraViewController: UIViewController, AVAudioRecorderDelegate {
         }
         
         
+    }
+    @IBAction func playButton(_ sender: UIButton) {
+        listenToSession()
     }
     
     @IBAction func recordButton(_ sender: UIButton) {
@@ -82,6 +86,16 @@ class CameraViewController: UIViewController, AVAudioRecorderDelegate {
         present(alert, animated: true, completion: nil)
     }
     
-    
+    func listenToSession() {
+        
+        let path = getDirectory().appendingPathComponent("\(sessionRecord).m4a")
+        
+        do {
+            audioPlayer = try AVAudioPlayer(contentsOf: path)
+            audioPlayer.play()
+        }   catch {
+            
+        }
+    }
     
 }
