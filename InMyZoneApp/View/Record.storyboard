@@ -13,22 +13,22 @@
         <!--Session-->
         <scene sceneID="sBS-oN-OHB">
             <objects>
-                <viewController id="SOj-35-RIh" customClass="CameraViewController" customModule="InMyZoneApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="SOj-35-RIh" customClass="RecordViewController" customModule="InMyZoneApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="0TP-WZ-XUX">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Press To Start Recording" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g00-xv-7yb">
-                                <rect key="frame" x="16" y="386" width="343" height="41"/>
+                                <rect key="frame" x="16" y="301" width="343" height="41"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="AvenirNext-Bold" family="Avenir Next" pointSize="17"/>
-                                <nil key="textColor"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="fill" contentVerticalAlignment="fill" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4dk-LC-tgP">
-                                <rect key="frame" x="157" y="545" width="60" height="60"/>
+                                <rect key="frame" x="157" y="472" width="60" height="60"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" backgroundImage="icons8-record-96"/>
+                                <state key="normal" backgroundImage="record-96"/>
                                 <connections>
                                     <action selector="recordButton:" destination="SOj-35-RIh" eventType="touchUpInside" id="Ahc-1l-cN2"/>
                                 </connections>
@@ -46,12 +46,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SNS-uz-8Yo" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="292" y="-7.389162561576355"/>
+            <point key="canvasLocation" x="282" y="-7"/>
         </scene>
-        <!--Camera View Controller-->
+        <!--Record View Controller-->
         <scene sceneID="qAE-Tk-udi">
             <objects>
-                <viewController id="JZu-3T-l1d" customClass="CameraViewController" customModule="InMyZoneApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="JZu-3T-l1d" customClass="RecordViewController" customModule="InMyZoneApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="m6V-GX-bFj">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -76,12 +76,12 @@
         <!--Navigation Controller-->
         <scene sceneID="zJg-he-2ww">
             <objects>
-                <navigationController storyboardIdentifier="NavigationToCamera" automaticallyAdjustsScrollViewInsets="NO" id="5f9-nu-pUn" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="NavigationToRecord" automaticallyAdjustsScrollViewInsets="NO" id="5f9-nu-pUn" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="" image="record" selectedImage="recordFilled" id="UyP-gH-UCe">
                         <inset key="imageInsets" minX="0.0" minY="5" maxX="0.0" maxY="-5"/>
                     </tabBarItem>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="s6S-H8-eJa">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" barStyle="blackTranslucent" id="s6S-H8-eJa">
                         <rect key="frame" x="0.0" y="44" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -96,8 +96,8 @@
         </scene>
     </scenes>
     <resources>
-        <image name="icons8-record-96" width="32" height="32"/>
         <image name="record" width="16.666666030883789" height="16.666666030883789"/>
+        <image name="record-96" width="32" height="32"/>
         <image name="recordFilled" width="16.666666030883789" height="16.666666030883789"/>
     </resources>
 </document>

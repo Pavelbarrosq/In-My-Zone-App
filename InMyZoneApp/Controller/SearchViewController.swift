@@ -13,7 +13,7 @@ class SearchViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.hideKeyboardWhenTappedAround() 
-
+        Design.shared.setBackground(view: view)
         // Do any additional setup after loading the view.
     }
     

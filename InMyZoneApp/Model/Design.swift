@@ -17,8 +17,8 @@ class Design {
         
         let fadeBackground = CAGradientLayer()
         fadeBackground.frame = view.bounds
-        fadeBackground.colors = [UIColor.init(red: 148/255, green: 55/255, blue: 255/255, alpha: 1).cgColor, UIColor.black.cgColor, UIColor.black.cgColor, UIColor.init(red: 148/255, green: 55/255, blue: 255/255, alpha: 1).cgColor]
-        fadeBackground.locations = [0, 0.2, 0.8, 1]
+        fadeBackground.colors = [UIColor.init(red: 148/255, green: 55/255, blue: 255/255, alpha: 1).cgColor, UIColor.black.cgColor, UIColor.black.cgColor, UIColor.black.cgColor, UIColor.black.cgColor, UIColor.init(red: 148/255, green: 55/255, blue: 255/255, alpha: 1).cgColor]
+        fadeBackground.locations = [0, 0.1, 0.2, 0.8, 0.9, 1]
         view.layer.insertSublayer(fadeBackground, at: 0)
         
     }

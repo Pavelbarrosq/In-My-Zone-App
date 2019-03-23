@@ -13,7 +13,8 @@
         <scene sceneID="Cjp-wX-LO5">
             <objects>
                 <tabBarController storyboardIdentifier="TabBarID" id="73G-C9-hWW" sceneMemberID="viewController">
-                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="TjM-LN-phT">
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics" barStyle="black"/>
+                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" barStyle="black" id="TjM-LN-phT">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -50,10 +51,10 @@
             </objects>
             <point key="canvasLocation" x="-978" y="-1308"/>
         </scene>
-        <!--NavigationToCamera-->
+        <!--NavigationToRecord-->
         <scene sceneID="xgN-pa-8kh">
             <objects>
-                <viewControllerPlaceholder storyboardName="Camera" referencedIdentifier="NavigationToCamera" id="kjJ-kV-P89" sceneMemberID="viewController">
+                <viewControllerPlaceholder storyboardName="Record" referencedIdentifier="NavigationToRecord" id="kjJ-kV-P89" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Item" id="xua-Pm-3Ic"/>
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xGZ-lD-ZNS" userLabel="First Responder" sceneMemberID="firstResponder"/>

@@ -10,10 +10,10 @@
 		4032A775E0E5129DBD77F604 /* Pods_InMyZoneAppUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 50D177E110E11EA4BFEB8258 /* Pods_InMyZoneAppUITests.framework */; };
 		4AACC642741365071D9FCACE /* Pods_InMyZoneApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7FCD3C8032854678119661F3 /* Pods_InMyZoneApp.framework */; };
 		9808459030E7816AD837BE1C /* Pods_InMyZoneAppTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4E515DE0303E467DF145EB96 /* Pods_InMyZoneAppTests.framework */; };
-		CD202D4C223FB8FD0079E6EA /* UIDesign.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD202D4B223FB8FD0079E6EA /* UIDesign.swift */; };
+		CD202D4C223FB8FD0079E6EA /* Design.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD202D4B223FB8FD0079E6EA /* Design.swift */; };
 		CD31BDC52239154C00EDAEA8 /* Feed.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CD31BDC42239154C00EDAEA8 /* Feed.storyboard */; };
 		CD31BDC7223915EA00EDAEA8 /* Search.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CD31BDC6223915EA00EDAEA8 /* Search.storyboard */; };
-		CD31BDC92239161B00EDAEA8 /* Camera.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CD31BDC82239161B00EDAEA8 /* Camera.storyboard */; };
+		CD31BDC92239161B00EDAEA8 /* Record.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CD31BDC82239161B00EDAEA8 /* Record.storyboard */; };
 		CD31BDCB2239166C00EDAEA8 /* Notification.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CD31BDCA2239166C00EDAEA8 /* Notification.storyboard */; };
 		CD31BDCD223916B200EDAEA8 /* Profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CD31BDCC223916B200EDAEA8 /* Profile.storyboard */; };
 		CD36835322380AE700EF0C28 /* Navigation.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CD36835222380AE700EF0C28 /* Navigation.storyboard */; };
@@ -31,7 +31,7 @@
 		CDDABDEE223173020069BB9C /* InMyZoneAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDDABDED223173020069BB9C /* InMyZoneAppUITests.swift */; };
 		CDDABDFC223186C70069BB9C /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDDABDFB223186C70069BB9C /* HomeViewController.swift */; };
 		CDDABDFE223187030069BB9C /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDDABDFD223187030069BB9C /* SearchViewController.swift */; };
-		CDDABE00223187110069BB9C /* CameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDDABDFF223187110069BB9C /* CameraViewController.swift */; };
+		CDDABE00223187110069BB9C /* RecordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDDABDFF223187110069BB9C /* RecordViewController.swift */; };
 		CDDABE022231871A0069BB9C /* NotificationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDDABE012231871A0069BB9C /* NotificationViewController.swift */; };
 		CDDABE04223187210069BB9C /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDDABE03223187210069BB9C /* ProfileViewController.swift */; };
 /* End PBXBuildFile section */
@@ -62,10 +62,10 @@
 		7FCD3C8032854678119661F3 /* Pods_InMyZoneApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_InMyZoneApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A7BA144BBED49C658FDC4CCA /* Pods-InMyZoneAppTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-InMyZoneAppTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-InMyZoneAppTests/Pods-InMyZoneAppTests.release.xcconfig"; sourceTree = "<group>"; };
 		C0B89AC9D2F2BD43B68BF631 /* Pods-InMyZoneAppUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-InMyZoneAppUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-InMyZoneAppUITests/Pods-InMyZoneAppUITests.release.xcconfig"; sourceTree = "<group>"; };
-		CD202D4B223FB8FD0079E6EA /* UIDesign.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIDesign.swift; sourceTree = "<group>"; };
+		CD202D4B223FB8FD0079E6EA /* Design.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Design.swift; sourceTree = "<group>"; };
 		CD31BDC42239154C00EDAEA8 /* Feed.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Feed.storyboard; sourceTree = "<group>"; };
 		CD31BDC6223915EA00EDAEA8 /* Search.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Search.storyboard; sourceTree = "<group>"; };
-		CD31BDC82239161B00EDAEA8 /* Camera.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Camera.storyboard; sourceTree = "<group>"; };
+		CD31BDC82239161B00EDAEA8 /* Record.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Record.storyboard; sourceTree = "<group>"; };
 		CD31BDCA2239166C00EDAEA8 /* Notification.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Notification.storyboard; sourceTree = "<group>"; };
 		CD31BDCC223916B200EDAEA8 /* Profile.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Profile.storyboard; sourceTree = "<group>"; };
 		CD36835222380AE700EF0C28 /* Navigation.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Navigation.storyboard; sourceTree = "<group>"; };
@@ -89,7 +89,7 @@
 		CDDABDEF223173020069BB9C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CDDABDFB223186C70069BB9C /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		CDDABDFD223187030069BB9C /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
-		CDDABDFF223187110069BB9C /* CameraViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraViewController.swift; sourceTree = "<group>"; };
+		CDDABDFF223187110069BB9C /* RecordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordViewController.swift; sourceTree = "<group>"; };
 		CDDABE012231871A0069BB9C /* NotificationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationViewController.swift; sourceTree = "<group>"; };
 		CDDABE03223187210069BB9C /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		E2FA64707AC939B802E32813 /* Pods-InMyZoneAppTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-InMyZoneAppTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-InMyZoneAppTests/Pods-InMyZoneAppTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -207,7 +207,7 @@
 				CD8E4EF62232D27B006FE2E6 /* SignUpViewController.swift */,
 				CDDABDFB223186C70069BB9C /* HomeViewController.swift */,
 				CDDABDFD223187030069BB9C /* SearchViewController.swift */,
-				CDDABDFF223187110069BB9C /* CameraViewController.swift */,
+				CDDABDFF223187110069BB9C /* RecordViewController.swift */,
 				CDDABE012231871A0069BB9C /* NotificationViewController.swift */,
 				CDDABE03223187210069BB9C /* ProfileViewController.swift */,
 			);
@@ -221,7 +221,7 @@
 				CD36835222380AE700EF0C28 /* Navigation.storyboard */,
 				CD31BDC42239154C00EDAEA8 /* Feed.storyboard */,
 				CD31BDC6223915EA00EDAEA8 /* Search.storyboard */,
-				CD31BDC82239161B00EDAEA8 /* Camera.storyboard */,
+				CD31BDC82239161B00EDAEA8 /* Record.storyboard */,
 				CD31BDCA2239166C00EDAEA8 /* Notification.storyboard */,
 				CD31BDCC223916B200EDAEA8 /* Profile.storyboard */,
 				CDDABDD6223173010069BB9C /* LaunchScreen.storyboard */,
@@ -235,7 +235,7 @@
 			children = (
 				CDDABDCD223173010069BB9C /* AppDelegate.swift */,
 				CD865267223F9B65003D2B23 /* AuthUtilitys.swift */,
-				CD202D4B223FB8FD0079E6EA /* UIDesign.swift */,
+				CD202D4B223FB8FD0079E6EA /* Design.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -349,7 +349,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CDDABDD8223173010069BB9C /* LaunchScreen.storyboard in Resources */,
-				CD31BDC92239161B00EDAEA8 /* Camera.storyboard in Resources */,
+				CD31BDC92239161B00EDAEA8 /* Record.storyboard in Resources */,
 				CD31BDCD223916B200EDAEA8 /* Profile.storyboard in Resources */,
 				CD31BDCB2239166C00EDAEA8 /* Notification.storyboard in Resources */,
 				CD8E4EFB2232DE6B006FE2E6 /* GoogleService-Info.plist in Resources */,
@@ -481,10 +481,10 @@
 			files = (
 				CDDABDD0223173010069BB9C /* ViewController.swift in Sources */,
 				CD8E4EF52232D26B006FE2E6 /* StartViewController.swift in Sources */,
-				CDDABE00223187110069BB9C /* CameraViewController.swift in Sources */,
+				CDDABE00223187110069BB9C /* RecordViewController.swift in Sources */,
 				CDDABE022231871A0069BB9C /* NotificationViewController.swift in Sources */,
 				CDDABDCE223173010069BB9C /* AppDelegate.swift in Sources */,
-				CD202D4C223FB8FD0079E6EA /* UIDesign.swift in Sources */,
+				CD202D4C223FB8FD0079E6EA /* Design.swift in Sources */,
 				CD865268223F9B65003D2B23 /* AuthUtilitys.swift in Sources */,
 				CDDABE04223187210069BB9C /* ProfileViewController.swift in Sources */,
 				CD8E4EF72232D27B006FE2E6 /* SignUpViewController.swift in Sources */,

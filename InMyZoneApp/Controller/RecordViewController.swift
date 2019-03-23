@@ -9,7 +9,7 @@
 import UIKit
 import AVFoundation
 
-class CameraViewController: UIViewController, AVAudioRecorderDelegate {
+class RecordViewController: UIViewController, AVAudioRecorderDelegate {
 
     @IBOutlet weak var recordButtonImage: UIButton!
     @IBOutlet weak var recordingLabel: UILabel!
@@ -22,7 +22,9 @@ class CameraViewController: UIViewController, AVAudioRecorderDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.hideKeyboardWhenTappedAround() 
+        self.hideKeyboardWhenTappedAround()
+        
+        Design.shared.setBackground(view: view)
         
         recordingSession = AVAudioSession.sharedInstance()
         
@@ -52,7 +54,7 @@ class CameraViewController: UIViewController, AVAudioRecorderDelegate {
                 
                 recordingLabel.text = "Press To Stop Session"
                 
-                let image = UIImage(named: "icons8-stop-96")
+                let image = UIImage(named: "stop-96")
                 recordButtonImage.setImage(image, for: .normal)
                 
             }   catch {
@@ -65,7 +67,7 @@ class CameraViewController: UIViewController, AVAudioRecorderDelegate {
             
             recordingLabel.text = "Please Wait..."
             
-            let image = UIImage(named: "icons8-record-96")
+            let image = UIImage(named: "record-96")
             recordButtonImage.setImage(image, for: .normal)
             
             DispatchQueue.main.asyncAfter(deadline:.now() + 2.0, execute: {
