@@ -21,8 +21,8 @@
 		CD8E4EF72232D27B006FE2E6 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD8E4EF62232D27B006FE2E6 /* SignUpViewController.swift */; };
 		CD8E4EF92232D283006FE2E6 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD8E4EF82232D283006FE2E6 /* LoginViewController.swift */; };
 		CD8E4EFB2232DE6B006FE2E6 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = CD8E4EFA2232DE6B006FE2E6 /* GoogleService-Info.plist */; };
-		CDBEC6022247FE2500B3CD90 /* CustomSessionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDBEC6002247FE2500B3CD90 /* CustomSessionCell.swift */; };
-		CDBEC6032247FE2500B3CD90 /* SessionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CDBEC6012247FE2500B3CD90 /* SessionCell.xib */; };
+		CDBEC6062248063600B3CD90 /* CustomSessionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDBEC6042248063600B3CD90 /* CustomSessionCell.swift */; };
+		CDBEC6072248063600B3CD90 /* SessionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CDBEC6052248063600B3CD90 /* SessionCell.xib */; };
 		CDDABDCE223173010069BB9C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDDABDCD223173010069BB9C /* AppDelegate.swift */; };
 		CDDABDD0223173010069BB9C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDDABDCF223173010069BB9C /* ViewController.swift */; };
 		CDDABDD3223173010069BB9C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CDDABDD1223173010069BB9C /* Main.storyboard */; };
@@ -74,8 +74,8 @@
 		CD8E4EF62232D27B006FE2E6 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		CD8E4EF82232D283006FE2E6 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		CD8E4EFA2232DE6B006FE2E6 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
-		CDBEC6002247FE2500B3CD90 /* CustomSessionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSessionCell.swift; sourceTree = "<group>"; };
-		CDBEC6012247FE2500B3CD90 /* SessionCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SessionCell.xib; sourceTree = "<group>"; };
+		CDBEC6042248063600B3CD90 /* CustomSessionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSessionCell.swift; sourceTree = "<group>"; };
+		CDBEC6052248063600B3CD90 /* SessionCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SessionCell.xib; sourceTree = "<group>"; };
 		CDDABDCA223173010069BB9C /* InMyZoneApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = InMyZoneApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CDDABDCD223173010069BB9C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CDDABDCF223173010069BB9C /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -151,6 +151,8 @@
 		CDBEC5F92247FC0200B3CD90 /* Custom Cell */ = {
 			isa = PBXGroup;
 			children = (
+				CDBEC6042248063600B3CD90 /* CustomSessionCell.swift */,
+				CDBEC6052248063600B3CD90 /* SessionCell.xib */,
 			);
 			path = "Custom Cell";
 			sourceTree = "<group>";
@@ -242,11 +244,9 @@
 		CDDABE072231877A0069BB9C /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				CDBEC5F92247FC0200B3CD90 /* Custom Cell */,
 				CDDABDCD223173010069BB9C /* AppDelegate.swift */,
-				CDBEC6002247FE2500B3CD90 /* CustomSessionCell.swift */,
-				CDBEC6012247FE2500B3CD90 /* SessionCell.xib */,
 				CD202D4B223FB8FD0079E6EA /* Design.swift */,
+				CDBEC5F92247FC0200B3CD90 /* Custom Cell */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -367,7 +367,7 @@
 				CD8E4EFB2232DE6B006FE2E6 /* GoogleService-Info.plist in Resources */,
 				CD31BDC52239154C00EDAEA8 /* Feed.storyboard in Resources */,
 				CD36835322380AE700EF0C28 /* Navigation.storyboard in Resources */,
-				CDBEC6032247FE2500B3CD90 /* SessionCell.xib in Resources */,
+				CDBEC6072248063600B3CD90 /* SessionCell.xib in Resources */,
 				CD31BDC7223915EA00EDAEA8 /* Search.storyboard in Resources */,
 				CDDABDD5223173010069BB9C /* Assets.xcassets in Resources */,
 				CDDABDD3223173010069BB9C /* Main.storyboard in Resources */,
@@ -523,7 +523,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CDDABDD0223173010069BB9C /* ViewController.swift in Sources */,
-				CDBEC6022247FE2500B3CD90 /* CustomSessionCell.swift in Sources */,
+				CDBEC6062248063600B3CD90 /* CustomSessionCell.swift in Sources */,
 				CD8E4EF52232D26B006FE2E6 /* StartViewController.swift in Sources */,
 				CDDABE00223187110069BB9C /* RecordViewController.swift in Sources */,
 				CDDABE022231871A0069BB9C /* NotificationViewController.swift in Sources */,

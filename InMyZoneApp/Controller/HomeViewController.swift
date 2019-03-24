@@ -11,6 +11,7 @@ import Firebase
 
 class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
+    @IBOutlet weak var sessionTableView: UITableView!
     
 
     override func viewDidLoad() {
@@ -18,6 +19,9 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
         self.hideKeyboardWhenTappedAround()
         Design.shared.setBackground(view: view)
 
+        sessionTableView.register(UINib(nibName: "SessionCell", bundle: nil), forCellReuseIdentifier: "customSessionCell")
+        
+        configureTableView()
         // Do any additional setup after loading the view.
     }
     
@@ -49,11 +53,24 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
     */
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 100
+        return 3
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        <#code#>
+        
+        let cell = tableView.dequeueReusableCell(withIdentifier: "customSessionCell", for: indexPath) as! CustomSessionCell
+        let descriptionArray = ["First Audio", "Second saasdasdasdasdasdasddasdlkhasdlkahjdlkajhsdlkhjsadfölhkasdflöhsefölkjhsadfölkhsdfölaskhdfölkhsadfölkhsadfölkjsadfölkjasdfölkjasdfölkjasdfölkjasdfölkjsadföljAudio", "Third Audio"]
+        
+        cell.descriptionLabel.text = descriptionArray[indexPath.row]
+        
+        return cell
+    }
+    
+    func configureTableView() {
+        
+        sessionTableView.rowHeight = UITableView.automaticDimension
+        sessionTableView.estimatedRowHeight = 150.0
+        
     }
 
 }

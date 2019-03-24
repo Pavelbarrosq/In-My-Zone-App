@@ -10,15 +10,20 @@ import UIKit
 
 class CustomSessionCell: UITableViewCell {
 
-    @IBOutlet weak var profileImageAvatar: UIImageView!
+    @IBOutlet weak var profileImage: UIImageView!
     @IBOutlet weak var usernameLabel: UILabel!
     @IBOutlet weak var descriptionLabel: UILabel!
-    @IBOutlet weak var playRecoredAudioButton: UIButton!
-    
+    @IBOutlet weak var recordedAudioButton: UIButton!
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        // Initialization code
     }
 
+    override func setSelected(_ selected: Bool, animated: Bool) {
+        super.setSelected(selected, animated: animated)
 
+        // Configure the view for the selected state
+    }
+    
 }
