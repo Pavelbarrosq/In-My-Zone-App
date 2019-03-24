@@ -17,11 +17,12 @@
 		CD31BDCB2239166C00EDAEA8 /* Notification.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CD31BDCA2239166C00EDAEA8 /* Notification.storyboard */; };
 		CD31BDCD223916B200EDAEA8 /* Profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CD31BDCC223916B200EDAEA8 /* Profile.storyboard */; };
 		CD36835322380AE700EF0C28 /* Navigation.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CD36835222380AE700EF0C28 /* Navigation.storyboard */; };
-		CD865268223F9B65003D2B23 /* AuthUtilitys.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD865267223F9B65003D2B23 /* AuthUtilitys.swift */; };
 		CD8E4EF52232D26B006FE2E6 /* StartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD8E4EF42232D26B006FE2E6 /* StartViewController.swift */; };
 		CD8E4EF72232D27B006FE2E6 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD8E4EF62232D27B006FE2E6 /* SignUpViewController.swift */; };
 		CD8E4EF92232D283006FE2E6 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD8E4EF82232D283006FE2E6 /* LoginViewController.swift */; };
 		CD8E4EFB2232DE6B006FE2E6 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = CD8E4EFA2232DE6B006FE2E6 /* GoogleService-Info.plist */; };
+		CDBEC6022247FE2500B3CD90 /* CustomSessionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDBEC6002247FE2500B3CD90 /* CustomSessionCell.swift */; };
+		CDBEC6032247FE2500B3CD90 /* SessionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CDBEC6012247FE2500B3CD90 /* SessionCell.xib */; };
 		CDDABDCE223173010069BB9C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDDABDCD223173010069BB9C /* AppDelegate.swift */; };
 		CDDABDD0223173010069BB9C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDDABDCF223173010069BB9C /* ViewController.swift */; };
 		CDDABDD3223173010069BB9C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CDDABDD1223173010069BB9C /* Main.storyboard */; };
@@ -69,11 +70,12 @@
 		CD31BDCA2239166C00EDAEA8 /* Notification.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Notification.storyboard; sourceTree = "<group>"; };
 		CD31BDCC223916B200EDAEA8 /* Profile.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Profile.storyboard; sourceTree = "<group>"; };
 		CD36835222380AE700EF0C28 /* Navigation.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Navigation.storyboard; sourceTree = "<group>"; };
-		CD865267223F9B65003D2B23 /* AuthUtilitys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthUtilitys.swift; sourceTree = "<group>"; };
 		CD8E4EF42232D26B006FE2E6 /* StartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartViewController.swift; sourceTree = "<group>"; };
 		CD8E4EF62232D27B006FE2E6 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		CD8E4EF82232D283006FE2E6 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		CD8E4EFA2232DE6B006FE2E6 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		CDBEC6002247FE2500B3CD90 /* CustomSessionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSessionCell.swift; sourceTree = "<group>"; };
+		CDBEC6012247FE2500B3CD90 /* SessionCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SessionCell.xib; sourceTree = "<group>"; };
 		CDDABDCA223173010069BB9C /* InMyZoneApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = InMyZoneApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CDDABDCD223173010069BB9C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CDDABDCF223173010069BB9C /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -144,6 +146,13 @@
 				50D177E110E11EA4BFEB8258 /* Pods_InMyZoneAppUITests.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		CDBEC5F92247FC0200B3CD90 /* Custom Cell */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "Custom Cell";
 			sourceTree = "<group>";
 		};
 		CDDABDC1223173010069BB9C = {
@@ -233,8 +242,10 @@
 		CDDABE072231877A0069BB9C /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				CDBEC5F92247FC0200B3CD90 /* Custom Cell */,
 				CDDABDCD223173010069BB9C /* AppDelegate.swift */,
-				CD865267223F9B65003D2B23 /* AuthUtilitys.swift */,
+				CDBEC6002247FE2500B3CD90 /* CustomSessionCell.swift */,
+				CDBEC6012247FE2500B3CD90 /* SessionCell.xib */,
 				CD202D4B223FB8FD0079E6EA /* Design.swift */,
 			);
 			path = Model;
@@ -252,6 +263,7 @@
 				CDDABDC7223173010069BB9C /* Frameworks */,
 				CDDABDC8223173010069BB9C /* Resources */,
 				A0290EE312032325D58B56FF /* [CP] Embed Pods Frameworks */,
+				65488AA5556BAFFC75A1FC73 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -355,6 +367,7 @@
 				CD8E4EFB2232DE6B006FE2E6 /* GoogleService-Info.plist in Resources */,
 				CD31BDC52239154C00EDAEA8 /* Feed.storyboard in Resources */,
 				CD36835322380AE700EF0C28 /* Navigation.storyboard in Resources */,
+				CDBEC6032247FE2500B3CD90 /* SessionCell.xib in Resources */,
 				CD31BDC7223915EA00EDAEA8 /* Search.storyboard in Resources */,
 				CDDABDD5223173010069BB9C /* Assets.xcassets in Resources */,
 				CDDABDD3223173010069BB9C /* Main.storyboard in Resources */,
@@ -378,6 +391,28 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		65488AA5556BAFFC75A1FC73 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-InMyZoneApp/Pods-InMyZoneApp-resources.sh",
+				"${PODS_CONFIGURATION_BUILD_DIR}/FirebaseFirestore/gRPCCertificates-Firestore.bundle",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/gRPCCertificates-Firestore.bundle",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-InMyZoneApp/Pods-InMyZoneApp-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		A0290EE312032325D58B56FF /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -387,8 +422,12 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-InMyZoneApp/Pods-InMyZoneApp-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/BoringSSL/openssl.framework",
 				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
+				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
+				"${BUILT_PRODUCTS_DIR}/gRPC-C++/grpcpp.framework",
+				"${BUILT_PRODUCTS_DIR}/gRPC-Core/grpc.framework",
 				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
 				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
@@ -396,8 +435,12 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/openssl.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/grpcpp.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/grpc.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 			);
@@ -480,12 +523,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				CDDABDD0223173010069BB9C /* ViewController.swift in Sources */,
+				CDBEC6022247FE2500B3CD90 /* CustomSessionCell.swift in Sources */,
 				CD8E4EF52232D26B006FE2E6 /* StartViewController.swift in Sources */,
 				CDDABE00223187110069BB9C /* RecordViewController.swift in Sources */,
 				CDDABE022231871A0069BB9C /* NotificationViewController.swift in Sources */,
 				CDDABDCE223173010069BB9C /* AppDelegate.swift in Sources */,
 				CD202D4C223FB8FD0079E6EA /* Design.swift in Sources */,
-				CD865268223F9B65003D2B23 /* AuthUtilitys.swift in Sources */,
 				CDDABE04223187210069BB9C /* ProfileViewController.swift in Sources */,
 				CD8E4EF72232D27B006FE2E6 /* SignUpViewController.swift in Sources */,
 				CDDABDFE223187030069BB9C /* SearchViewController.swift in Sources */,

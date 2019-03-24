@@ -59,19 +59,16 @@ class LoginViewController: UIViewController {
     
     @IBAction func loginButton(_ sender: UIButton) {
         
-        AuthUtilitys.login(email: email.text!, password: password.text!, onSuccess: {
-            self.performSegue(withIdentifier: "loginToHome", sender: self)
-        }) { (error) in
-            let alertController = UIAlertController(title: "Error", message: error, preferredStyle: .alert)
-            let alertAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
-            
-            alertController.addAction(alertAction)
-            self.present(alertController, animated: true, completion: nil)
-
+        Auth.auth().signIn(withEmail: email.text!, password: password.text!) { (user, error) in
+            if error == nil {
+                self.performSegue(withIdentifier: "loginToHome", sender: self)
+            }   else {
+                let alertController = UIAlertController(title: "Error", message: error?.localizedDescription, preferredStyle: .alert)
+                let alertAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+                alertController.addAction(alertAction)
+                self.present(alertController, animated: true, completion: nil)
+            }
         }
-        
-       
-
         
     }
     

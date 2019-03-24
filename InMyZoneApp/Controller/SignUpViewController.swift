@@ -8,7 +8,7 @@
 
 import UIKit
 import Firebase
-import FirebaseDatabase
+import FirebaseFirestore
 
 class SignUpViewController: UIViewController {
 
@@ -18,6 +18,9 @@ class SignUpViewController: UIViewController {
     @IBOutlet weak var repeatPassword: UITextField!
     @IBOutlet weak var showPassword: UIButton!
     @IBOutlet weak var signInButton: UIButton!
+    
+    var ref: DocumentReference? = nil
+    let db = Firestore.firestore()
     
     
     override func viewDidLoad() {
@@ -35,8 +38,6 @@ class SignUpViewController: UIViewController {
         
         signInButton.isEnabled = false
         signInButton.setTitleColor(UIColor.lightText, for: .normal)
-        
-        
         
     }
     
@@ -80,23 +81,25 @@ class SignUpViewController: UIViewController {
             
         }   else {
             
-            AuthUtilitys.signUp(username: usernameTextField.text!, email: emailTextfield.text!, password: passwordTextField.text!, onSuccess: {
-                AuthUtilitys.setUserInformaition(username: self.usernameTextField.text!, email: self.emailTextfield.text!, onSuccess: {
+            Auth.auth().createUser(withEmail: emailTextfield.text!, password: passwordTextField.text!) { (user, error) in
+                if error == nil {
+                    
+                    self.ref = self.db.collection("users").addDocument(data: [
+                        "username": self.usernameTextField.text!,
+                        "email": self.emailTextfield.text!
+                        ]) { (error) in
+                            if error != nil {
+                                print(error!)
+                            }   else {
+                                print("Document added with ID: \(String(describing: self.ref?.documentID))")
+                            }
+                    }
+                    
                     self.performSegue(withIdentifier: "signUpToHome", sender: self)
-                })
-                
-                
-            }) { (error) in
-                let alertController = UIAlertController(title: "Error", message: error, preferredStyle: .alert)
-                let alertAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
-                
-                alertController.addAction(alertAction)
-                self.present(alertController, animated: true, completion: nil)
             }
-            
         }
-        
     }
+}
 
 
     @IBAction func backButton(_ sender: UIButton) {
