@@ -69,12 +69,12 @@ class RecordViewController: UIViewController, AVAudioRecorderDelegate {
             audioRecorder.stop()
             audioRecorder = nil
             
-            recordingLabel.text = "Please Wait..."
+            recordingLabel.text = "..."
             
             let image = UIImage(named: "record-96")
             recordButtonImage.setImage(image, for: .normal)
             
-            DispatchQueue.main.asyncAfter(deadline:.now() + 2.0, execute: {
+            DispatchQueue.main.asyncAfter(deadline:.now() + 1.0, execute: {
                 self.performSegue(withIdentifier:"sessionToEdit",sender: self)
             })
         }

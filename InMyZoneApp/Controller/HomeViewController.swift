@@ -59,7 +59,7 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "customSessionCell", for: indexPath) as! CustomSessionCell
-        let descriptionArray = ["First Audio", "Second saasdasdasdasdasdasddasdlkhasdlkahjdlkajhsdlkhjsadfölhkasdflöhsefölkjhsadfölkhsdfölaskhdfölkhsadfölkhsadfölkjsadfölkjasdfölkjasdfölkjasdfölkjasdfölkjsadföljAudio", "Third Audio"]
+        let descriptionArray = ["First Audio", "Second Audio", "Third Audio"]
         
         cell.descriptionLabel.text = descriptionArray[indexPath.row]
         
@@ -69,7 +69,7 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
     func configureTableView() {
         
         sessionTableView.rowHeight = UITableView.automaticDimension
-        sessionTableView.estimatedRowHeight = 150.0
+        sessionTableView.estimatedRowHeight = 120.0
         
     }
 
