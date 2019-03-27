@@ -8,20 +8,22 @@
 
 import UIKit
 import AVFoundation
+import FirebaseFirestore
 
 class RecordViewController: UIViewController, AVAudioRecorderDelegate {
 
     @IBOutlet weak var recordButtonImage: UIButton!
     @IBOutlet weak var recordingLabel: UILabel!
-    @IBOutlet weak var addDescriptionToPost: UITextView!
+    @IBOutlet weak var descriptionTextField: UITextField!
+    
+    var listOfPost: [Post] = []
+    
     
     var recordingSession: AVAudioSession!
     var audioRecorder: AVAudioRecorder!
     var audioPlayer: AVAudioPlayer!
-    
-    var currentAudioRecordedUrl: String?
-    
-    var sessionRecord = 0
+    var currentAudioUrl: String!
+    var sessionRecord = "Recorded Audio"
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,6 +41,26 @@ class RecordViewController: UIViewController, AVAudioRecorderDelegate {
         
     }
     @IBAction func shareButton(_ sender: UIButton) {
+
+        let post = Post.init(audioURL: currentAudioUrl, postDescription: descriptionTextField.text!)
+        
+        listOfPost.append(post)
+        let db = Firestore.firestore().collection("posts")
+        
+        for item in listOfPost {
+            db.addDocument(data: item.toAny())
+        }
+        
+//        let post = Post.init(audioURL: currentAudioUrl, postDescription: descriptionTextField.text!)
+//
+//        let db = Firestore.firestore().collection("posts")
+//            db.addDocument(data: post.toAny()) { (error) in
+//            if error != nil{
+//                print("Error when performing add:  ")
+//            }   else {
+//                print("Succes adding")
+//                }
+//        }
         
     }
     
@@ -48,19 +70,19 @@ class RecordViewController: UIViewController, AVAudioRecorderDelegate {
     
     @IBAction func recordButton(_ sender: UIButton) {
         if audioRecorder == nil {
+            
             let fileName = getDirectory().appendingPathComponent("\(sessionRecord).m4a")
             
             let settings = [AVFormatIDKey: Int(kAudioFormatMPEG4AAC), AVSampleRateKey: 12000, AVNumberOfChannelsKey: 1, AVEncoderAudioQualityKey: AVAudioQuality.high.rawValue]
             
             // Start Audio Recording
             do {
+                recordingLabel.text = "Press To Stop Session"
+                
                 audioRecorder = try AVAudioRecorder(url: fileName, settings: settings)
                 audioRecorder.delegate = self
                 audioRecorder.record()
-                
-                
-                
-                recordingLabel.text = "Press To Stop Session"
+
                 
                 let image = UIImage(named: "stop-96")
                 recordButtonImage.setImage(image, for: .normal)
@@ -71,11 +93,13 @@ class RecordViewController: UIViewController, AVAudioRecorderDelegate {
         }   else {
             //Stopping Audio Recording
             audioRecorder.stop()
-            currentAudioRecordedUrl = "\(audioRecorder.url)"
-            print("Current Audio URL: \(currentAudioRecordedUrl!)")
-            audioRecorder = nil
+
             
-            recordingLabel.text = "..."
+            currentAudioUrl = "\(audioRecorder.url)"
+            print("Current Audio URL: \(currentAudioUrl!)")
+            print("Current Audio : \(sessionRecord)")
+            
+            audioRecorder = nil
             
             let image = UIImage(named: "record-96")
             recordButtonImage.setImage(image, for: .normal)
@@ -84,6 +108,9 @@ class RecordViewController: UIViewController, AVAudioRecorderDelegate {
                 self.performSegue(withIdentifier:"sessionToEdit",sender: self)
             })
         }
+        
+        
+        
     }
     
     func getDirectory() -> URL {
@@ -109,5 +136,4 @@ class RecordViewController: UIViewController, AVAudioRecorderDelegate {
             
         }
     }
-    
 }

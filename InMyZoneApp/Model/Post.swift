@@ -16,4 +16,9 @@ class Post {
         self.audioURL = audioURL
         self.postDescription = postDescription
     }
+    
+    func toAny() -> [String: Any] {
+        return ["audioURL": audioURL!,
+                "postDescrition": postDescription!]
+    }
 }
