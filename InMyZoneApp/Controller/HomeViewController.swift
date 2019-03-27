@@ -11,6 +11,8 @@ import Firebase
 
 class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
+    
+    
     @IBOutlet weak var sessionTableView: UITableView!
     
 
@@ -53,13 +55,13 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
     */
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 3
+        return 6
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "customSessionCell", for: indexPath) as! CustomSessionCell
-        let descriptionArray = ["First Audio", "Second Audio", "Third Audio"]
+        let descriptionArray = ["First Audio", "Second Audio", "Third Audio", "Fourth Audio", "Fifth Audio", "Sixth Audio"]
         
         cell.descriptionLabel.text = descriptionArray[indexPath.row]
         

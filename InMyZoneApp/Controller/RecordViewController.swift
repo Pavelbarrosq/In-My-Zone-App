@@ -19,6 +19,8 @@ class RecordViewController: UIViewController, AVAudioRecorderDelegate {
     var audioRecorder: AVAudioRecorder!
     var audioPlayer: AVAudioPlayer!
     
+    var currentAudioRecordedUrl: String?
+    
     var sessionRecord = 0
     
     override func viewDidLoad() {
@@ -56,6 +58,8 @@ class RecordViewController: UIViewController, AVAudioRecorderDelegate {
                 audioRecorder.delegate = self
                 audioRecorder.record()
                 
+                
+                
                 recordingLabel.text = "Press To Stop Session"
                 
                 let image = UIImage(named: "stop-96")
@@ -67,6 +71,8 @@ class RecordViewController: UIViewController, AVAudioRecorderDelegate {
         }   else {
             //Stopping Audio Recording
             audioRecorder.stop()
+            currentAudioRecordedUrl = "\(audioRecorder.url)"
+            print("Current Audio URL: \(currentAudioRecordedUrl!)")
             audioRecorder = nil
             
             recordingLabel.text = "..."
