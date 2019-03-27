@@ -30,7 +30,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" backgroundImage="record-96"/>
                                 <connections>
-                                    <action selector="recordButton:" destination="SOj-35-RIh" eventType="touchUpInside" id="Ahc-1l-cN2"/>
+                                    <action selector="recordButton:" destination="SOj-35-RIh" eventType="touchUpInside" id="TGr-Va-PWz"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -39,8 +39,8 @@
                     </view>
                     <navigationItem key="navigationItem" title="Session" id="dgw-9f-fpQ"/>
                     <connections>
-                        <outlet property="recordButtonImage" destination="4dk-LC-tgP" id="gXd-7B-UQf"/>
-                        <outlet property="recordingLabel" destination="g00-xv-7yb" id="YmM-cE-tRr"/>
+                        <outlet property="recordButtonImage" destination="4dk-LC-tgP" id="DeR-LE-yDa"/>
+                        <outlet property="recordingLabel" destination="g00-xv-7yb" id="gKj-tr-wBn"/>
                         <segue destination="JZu-3T-l1d" kind="show" identifier="sessionToEdit" id="0Wl-zv-s9K"/>
                     </connections>
                 </viewController>
@@ -76,7 +76,7 @@
                                         </constraints>
                                         <state key="normal" backgroundImage="play-96"/>
                                         <connections>
-                                            <action selector="playButton:" destination="JZu-3T-l1d" eventType="touchUpInside" id="rQS-fZ-Xgj"/>
+                                            <action selector="playButton:" destination="JZu-3T-l1d" eventType="touchUpInside" id="7Qj-Jg-F7n"/>
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Preview Audio" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SwP-zv-yLu">
@@ -118,7 +118,7 @@
                                     <color key="titleColor" red="0.58188301320000002" green="0.21569153669999999" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
-                                    <action selector="shareButton:" destination="JZu-3T-l1d" eventType="touchUpInside" id="se8-K4-XXp"/>
+                                    <action selector="shareButton:" destination="JZu-3T-l1d" eventType="touchUpInside" id="YXN-jk-bFa"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -131,7 +131,7 @@
                         <viewLayoutGuide key="safeArea" id="uLD-sw-jsr"/>
                     </view>
                     <connections>
-                        <outlet property="descriptionTextField" destination="3PH-aZ-9U6" id="Fh3-70-LPS"/>
+                        <outlet property="descriptionTextField" destination="3PH-aZ-9U6" id="z48-OU-t6n"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7kK-bG-Uy5" userLabel="First Responder" sceneMemberID="firstResponder"/>
