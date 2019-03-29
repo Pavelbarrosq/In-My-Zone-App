@@ -8,7 +8,6 @@
 
 import UIKit
 import Firebase
-import FirebaseFirestore
 
 class SignUpViewController: UIViewController {
 
@@ -20,11 +19,14 @@ class SignUpViewController: UIViewController {
     @IBOutlet weak var signInButton: UIButton!
     
     var ref: DocumentReference? = nil
-    let db = Firestore.firestore()
+    var db: Firestore!
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        db = Firestore.firestore()
+        
         self.hideKeyboardWhenTappedAround() 
         
         Design.shared.setBackground(view: view)
@@ -84,8 +86,12 @@ class SignUpViewController: UIViewController {
             Auth.auth().createUser(withEmail: emailTextfield.text!, password: passwordTextField.text!) { (user, error) in
                 if error == nil {
                     
-                    self.ref = self.db.collection("users").addDocument(data: [
-                        "username": self.usernameTextField.text!,
+                    guard let user = Auth.auth().currentUser else {return}
+                    
+                    let itemRef = self.db.collection("users").document(user.uid)
+                    
+                    itemRef.setData([
+                       "username": self.usernameTextField.text!,
                         "email": self.emailTextfield.text!
                         ]) { (error) in
                             if error != nil {

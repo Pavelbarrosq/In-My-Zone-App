@@ -9,6 +9,8 @@
 import UIKit
 import AVFoundation
 import FirebaseFirestore
+import FirebaseStorage
+import FirebaseAuth
 
 class RecordViewController: UIViewController, AVAudioRecorderDelegate {
 
@@ -16,16 +18,22 @@ class RecordViewController: UIViewController, AVAudioRecorderDelegate {
     @IBOutlet weak var recordingLabel: UILabel!
     @IBOutlet weak var descriptionTextField: UITextField!
     
+    var db: Firestore!
+    var auth: Auth!
     
     var recordingSession: AVAudioSession!
     var audioRecorder: AVAudioRecorder!
     var audioPlayer: AVAudioPlayer!
-    var urlString: String!
-//    var sessionRecord = "Recorded Audio"
+    var urlString = ""
+    
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.hideKeyboardWhenTappedAround()
+        
+        db = Firestore.firestore()
+        auth = Auth.auth()
         
         Design.shared.setBackground(view: view)
         
@@ -39,26 +47,34 @@ class RecordViewController: UIViewController, AVAudioRecorderDelegate {
         
     }
     @IBAction func shareButton(_ sender: UIButton) {
-
-//        let post = Post.init(audioURL: currentAudioUrl, postDescription: descriptionTextField.text!)
-//
-//        listOfPost.append(post)
-//        let db = Firestore.firestore().collection("posts")
-//
-//        for item in listOfPost {
-//            db.addDocument(data: item.toAny())
-//        }
         
-        let post = Post.init(audioURL: urlString, postDescription: descriptionTextField.text!)
-
-        let db = Firestore.firestore().collection("posts")
-            db.addDocument(data: post.toAny()) { (error) in
-            if error != nil{
-                print("Error when performing add:  ")
-            }   else {
-                print("Succes adding")
+        let post = Post(audioURL: urlString, postDescription: descriptionTextField.text!)
+        
+        guard let user = auth.currentUser else {return}
+        
+        let itemref = db.collection("users").document(user.uid).collection("posts")
+        itemref.addDocument(data: post.toAny()) { (error) in
+            if error != nil {
+                print("Error when performing add: \(error?.localizedDescription) ")
+                }   else {
+                print("Succes adding") 
                 }
         }
+        
+        
+//        let db = Firestore.firestore().collection("posts")
+//            db.addDocument(data: post.toAny()) { (error) in
+//            if error != nil{
+//                print("Error when performing add: \(error?.localizedDescription) ")
+//            }   else {
+//                print("Succes adding")
+//                }
+//        }
+        
+        
+        
+        
+        
         
     }
     
@@ -71,7 +87,7 @@ class RecordViewController: UIViewController, AVAudioRecorderDelegate {
         audioPlayer.prepareToPlay()
         audioPlayer.volume = 10.0
         audioPlayer.play()
-        print("More url: \(urlString)")
+        print("url String: \(String(describing: urlString))")
     }
     
     @IBAction func recordButton(_ sender: UIButton) {
@@ -90,19 +106,15 @@ class RecordViewController: UIViewController, AVAudioRecorderDelegate {
             
                 let image = UIImage(named: "stop-96")
                 recordButtonImage.setImage(image, for: .normal)
-//                currentAudioUrl = audioRecorder.url
             }   catch {
                 displayAlert(title: "Ops!", message: "Recording Failed")
             }
         }   else {
             //Stopping Audio Recording
             audioRecorder.stop()
-            urlString = audioRecorder.url(string: urlString)
-        
-//            currentAudioUrl = "\(audioRecorder.url)"
-//            print("Current Audio URL: \(currentAudioUrl!)")
-//            print("Current Audio : \(sessionRecord)")
-            print("Audio URL Is: \(audioRecorder.url)")
+            print("AudioRecorder url is: \(audioRecorder.url)")
+            
+            print("url String is: \(String(describing: urlString))")
             
             audioRecorder = nil
             
@@ -113,6 +125,8 @@ class RecordViewController: UIViewController, AVAudioRecorderDelegate {
                 self.performSegue(withIdentifier:"sessionToEdit",sender: self)
             })
         }
+        
+        
     }
     
     func getDocumentsDirectory() -> URL {
@@ -122,6 +136,7 @@ class RecordViewController: UIViewController, AVAudioRecorderDelegate {
     
     func getFileURL() -> URL {
         let path = getDocumentsDirectory().appendingPathComponent("recording.m4a")
+        urlString = path.absoluteString
         return path as URL
     }
     
