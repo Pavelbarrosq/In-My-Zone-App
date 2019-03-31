@@ -21,11 +21,14 @@ class RecordViewController: UIViewController, AVAudioRecorderDelegate {
     var db: Firestore!
     var auth: Auth!
     var storage: Storage!
+    var storageRef: StorageReference!
     
     var recordingSession: AVAudioSession!
     var audioRecorder: AVAudioRecorder!
     var audioPlayer: AVAudioPlayer!
     var urlString = ""
+    var url: URL!
+    var currentUuid: String!
     
     
     
@@ -63,21 +66,29 @@ class RecordViewController: UIViewController, AVAudioRecorderDelegate {
             }
         }
         
-        
-        //        let db = Firestore.firestore().collection("posts")
-        //            db.addDocument(data: post.toAny()) { (error) in
-        //            if error != nil{
-        //                print("Error when performing add: \(error?.localizedDescription) ")
-        //            }   else {
-        //                print("Succes adding")
-        //                }
-        //        }
-        
-        
-        
-        
-        
-        
+        let uuid = NSUUID().uuidString
+        currentUuid = uuid
+        let soundRef = storage.reference().child("audio/\(uuid)")
+        print("current UUID is : \(currentUuid)")
+        let uploadTask = soundRef.putFile(from: url , metadata: nil) {
+            metadata, error in
+            if let metadata = metadata {
+                print("upload")
+                do {
+                    let url = self.getFileURL()
+                    try FileManager.default.removeItem(at: url)
+                } catch {}
+            } else {
+                print("error")
+            }
+            
+        }
+
+    }
+    
+    func downloadUrl() {
+        let audioReference = storageRef.child("audio/\(currentUuid)")
+        print("current UUID is : \(currentUuid)")
     }
     
     @IBAction func playButton(_ sender: UIButton) {
@@ -115,24 +126,7 @@ class RecordViewController: UIViewController, AVAudioRecorderDelegate {
             //Stopping Audio Recording
             audioRecorder.stop()
             
-            let uuid = NSUUID().uuidString
-            let soundRef = storage.reference().child("images/\(uuid)")
             
-            let uploadTask = soundRef.putFile(from: audioRecorder.url, metadata: nil) {
-                metadata, error in
-                if let metadata = metadata {
-                    print("upload")
-                    do {
-                        let url = self.getFileURL()
-                        try FileManager.default.removeItem(at: url)
-                    } catch {}
-                } else {
-                    print("error")
-                }
-                
-                
-                
-            }
             
             
             
@@ -161,6 +155,7 @@ class RecordViewController: UIViewController, AVAudioRecorderDelegate {
     func getFileURL() -> URL {
         let path = getDocumentsDirectory().appendingPathComponent("recording.m4a")
         urlString = path.absoluteString
+        url = path.absoluteURL
         return path as URL
     }
     
