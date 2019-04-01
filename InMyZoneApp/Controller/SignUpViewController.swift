@@ -9,7 +9,7 @@
 import UIKit
 import Firebase
 
-class SignUpViewController: UIViewController {
+class SignUpViewController: UIViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
 
     @IBOutlet weak var usernameTextField: UITextField!
     @IBOutlet weak var emailTextfield: UITextField!
@@ -17,15 +17,22 @@ class SignUpViewController: UIViewController {
     @IBOutlet weak var repeatPassword: UITextField!
     @IBOutlet weak var showPassword: UIButton!
     @IBOutlet weak var signInButton: UIButton!
+    @IBOutlet weak var addPhoto: UIImageView!
     
-    var ref: DocumentReference? = nil
+    var storage: Storage!
+    var storageRef: StorageReference!
     var db: Firestore!
+    var imagepicker: UIImagePickerController!
+    var profileImageURL: String!
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         db = Firestore.firestore()
+        storage = Storage.storage()
+        
+        addPhoto.layer.cornerRadius = 40
         
         self.hideKeyboardWhenTappedAround() 
         
@@ -40,6 +47,14 @@ class SignUpViewController: UIViewController {
         
         signInButton.isEnabled = false
         signInButton.setTitleColor(UIColor.lightText, for: .normal)
+        
+        let imageTap = UITapGestureRecognizer(target: self, action: #selector(openImagePicker(_:)))
+        addPhoto.isUserInteractionEnabled = true
+        addPhoto.addGestureRecognizer(imageTap)
+        addPhoto.layer.cornerRadius = addPhoto.bounds.height / 2
+//        addPhoto.clipsToBounds = true
+        
+        
         
     }
     
@@ -82,30 +97,41 @@ class SignUpViewController: UIViewController {
             self.present(alertController, animated: true, completion: nil)
             
         }   else {
-            
             Auth.auth().createUser(withEmail: emailTextfield.text!, password: passwordTextField.text!) { (user, error) in
                 if error == nil {
                     
-                    guard let user = Auth.auth().currentUser else {return}
+                    let user = Auth.auth().currentUser
+                    let storageRef = self.storage.reference().child("profileimage/\(user!.uid)")
                     
-                    let itemRef = self.db.collection("users").document(user.uid)
-                    
-                    itemRef.setData([
-                       "username": self.usernameTextField.text!,
-                        "email": self.emailTextfield.text!
-                        ]) { (error) in
-                            if error != nil {
-                                print(error!)
-                            }   else {
-                                print("Document added with ID: \(String(describing: self.ref?.documentID))")
+                    let image = self.addPhoto.image
+                    let imageData = image!.jpegData(compressionQuality: 0.5)
+                    let uploadImage = storageRef.putData(imageData!, metadata: nil) { (query, error) in
+                        print("Upload success")
+                        storageRef.downloadURL(completion: { (url, error) in
+                            if let error = error {
+                                print("error downloading url: \(error)")
+                            } else {
+                                if let url = url {
+                                    self.profileImageURL = url.absoluteString
+                                    let itemRef = self.db.collection("users").document(user!.uid)
+                                    
+                                    let profileInfo = Profile(username: self.usernameTextField.text!, email: self.emailTextfield.text!, photoUrl: self.profileImageURL)
+                                    itemRef.setData(profileInfo.toAny(), completion: { (error) in
+                                        if error != nil {
+                                            print(error)
+                                        } else {
+                                            print("Document added with userInfo")
+                                            self.performSegue(withIdentifier: "signUpToHome", sender: self)
+                                        }
+                                    })
+                                }
                             }
+                        })
                     }
-                    
-                    self.performSegue(withIdentifier: "signUpToHome", sender: self)
+                }
             }
         }
     }
-}
 
 
     @IBAction func backButton(_ sender: UIButton) {
@@ -131,5 +157,42 @@ class SignUpViewController: UIViewController {
             
         }
         
+    }
+    
+    @objc func openImagePicker(_ sender:Any) {
+        let imagePickerController = UIImagePickerController()
+        imagePickerController.delegate = self
+        
+        let actionSheet = UIAlertController(title: "Photo Source", message: "Choose a Source", preferredStyle: .actionSheet)
+        actionSheet.addAction(UIAlertAction(title: "Camera", style: .default, handler: { (action:UIAlertAction) in
+            if UIImagePickerController.isSourceTypeAvailable(.camera) {
+                imagePickerController.sourceType = .camera
+                self.present(imagePickerController, animated: true, completion: nil)
+            } else {
+                print("Camera not available")
+            }
+            
+        }))
+        
+        actionSheet.addAction(UIAlertAction(title: "Photo Library", style: .default, handler: { (action:UIAlertAction) in
+            imagePickerController.sourceType = .photoLibrary
+            self.present(imagePickerController, animated: true, completion: nil)
+            
+        }))
+        
+        actionSheet.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil ))
+        
+        self.present(actionSheet, animated: true, completion: nil)
+    }
+    
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        picker.dismiss(animated: true, completion: nil)
+    }
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        let pickedImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage
+        addPhoto.image = pickedImage
+        
+        picker.dismiss(animated: true, completion: nil)
     }
 }

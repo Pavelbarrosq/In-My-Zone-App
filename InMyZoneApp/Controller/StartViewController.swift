@@ -22,6 +22,7 @@ class StartViewController: UIViewController {
         Design.shared.setButton(button: loginButton)
         Design.shared.setButton(button: signUpButton)
         
+        
     }
     
     override func viewDidAppear(_ animated: Bool) {

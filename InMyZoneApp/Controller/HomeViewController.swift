@@ -11,19 +11,21 @@ import Firebase
 
 class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
-    
-    
     @IBOutlet weak var sessionTableView: UITableView!
     
+    var ref: DocumentReference? = nil
+    var db: Firestore!
 
     override func viewDidLoad() {
         super.viewDidLoad()
         self.hideKeyboardWhenTappedAround()
         Design.shared.setBackground(view: view)
+        
+        db = Firestore.firestore()
 
         sessionTableView.register(UINib(nibName: "SessionCell", bundle: nil), forCellReuseIdentifier: "customSessionCell")
         
-        configureTableView()
+        
         // Do any additional setup after loading the view.
     }
     
@@ -44,35 +46,24 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
         self.present(startVC, animated: true, completion: nil)
     }
     
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    func loadPost() {
+        guard let user = Auth.auth().currentUser else {return}
+        
+        let itemRef = self.db.collection("users").document(user.uid).collection("posts")
+        
     }
-    */
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 6
+        return 100
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
-        let cell = tableView.dequeueReusableCell(withIdentifier: "customSessionCell", for: indexPath) as! CustomSessionCell
-        let descriptionArray = ["First Audio", "Second Audio", "Third Audio", "Fourth Audio", "Fifth Audio", "Sixth Audio"]
-        
-        cell.descriptionLabel.text = descriptionArray[indexPath.row]
-        
-        return cell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "PostCell", for: indexPath)
+                cell.textLabel?.text = "\(indexPath.row)"
+        cell.backgroundColor = UIColor.lightGray
+       return cell
     }
     
-    func configureTableView() {
-        
-        sessionTableView.rowHeight = UITableView.automaticDimension
-        sessionTableView.estimatedRowHeight = 120.0
-        
-    }
+   
 
 }

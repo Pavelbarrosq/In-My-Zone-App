@@ -31,6 +31,7 @@ class RecordViewController: UIViewController, AVAudioRecorderDelegate {
     var currentUuid: String!
     
     
+    var vc = HomeViewController()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -71,7 +72,7 @@ class RecordViewController: UIViewController, AVAudioRecorderDelegate {
         let uuid = NSUUID().uuidString
         currentUuid = uuid
         let soundRef = storage.reference().child("audio/\(uuid)")
-        print("current UUID is : \(currentUuid)")
+        print("current UUID is : \(uuid)")
         let uploadTask = soundRef.putFile(from: url , metadata: nil) {
             metadata, error in
             if let metadata = metadata {
@@ -83,14 +84,22 @@ class RecordViewController: UIViewController, AVAudioRecorderDelegate {
             } else {
                 print("error")
             }
-            
         }
-
+//        soundRef.downloadURL { (url, error) in
+//            if let error = error {
+//                print("Error retreving url: \(error)")
+//            }   else {
+//                do {
+//                    self.vc.audioPlayer = try AVAudioPlayer(contentsOf: self.url)
+//                    print("Success putting url to audioPlayer")
+//                }   catch {
+//                    print("eror putting url to audioPlayer")
+//                }
+//            }
+//        }
     }
     
     func downloadUrl() {
-        let audioReference = storageRef.child("audio/\(currentUuid)")
-        print("current UUID is : \(currentUuid)")
     }
     
     @IBAction func playButton(_ sender: UIButton) {
@@ -127,13 +136,8 @@ class RecordViewController: UIViewController, AVAudioRecorderDelegate {
         }   else {
             //Stopping Audio Recording
             audioRecorder.stop()
-            
-            
-            
-            
-            
+    
             print("AudioRecorder url is: \(audioRecorder.url)")
-            
             print("url String is: \(String(describing: urlString))")
             
             audioRecorder = nil
