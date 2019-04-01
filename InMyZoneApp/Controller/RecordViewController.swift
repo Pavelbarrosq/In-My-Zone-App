@@ -40,6 +40,8 @@ class RecordViewController: UIViewController, AVAudioRecorderDelegate {
         auth = Auth.auth()
         storage = Storage.storage()
         
+        url = getFileURL()
+        
         Design.shared.setBackground(view: view)
         
         recordingSession = AVAudioSession.sharedInstance()
