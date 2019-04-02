@@ -11,6 +11,7 @@ pod 'Firebase/Auth'
 pod 'Firebase/Database'
 pod 'Firebase/Storage'
 pod 'Firebase/Firestore'
+pod 'SDWebImage'
 
   target 'InMyZoneAppTests' do
     inherit! :search_paths

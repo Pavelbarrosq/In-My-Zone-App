@@ -28,6 +28,7 @@ class RecordViewController: UIViewController, AVAudioRecorderDelegate {
     var audioPlayer: AVAudioPlayer!
     var urlString = ""
     var url: URL!
+    
     var currentUuid: String!
     
     
@@ -76,7 +77,23 @@ class RecordViewController: UIViewController, AVAudioRecorderDelegate {
         let uploadTask = soundRef.putFile(from: url , metadata: nil) {
             metadata, error in
             if let metadata = metadata {
-                print("upload")
+                
+                soundRef.downloadURL { (url, error) in
+                    if let error = error {
+                        print("Error retreving url: \(error)")
+                    }   else {
+                        
+                        url 
+                        
+                        do {
+//                            self.vc.audioPlayer = try AVAudioPlayer(contentsOf: self.url)
+                            print("Success putting url to audioPlayer")
+                        }   catch {
+                            print("eror putting url to audioPlayer")
+                        }
+                    }
+                }
+                
                 do {
                     let url = self.getFileURL()
                     try FileManager.default.removeItem(at: url)
@@ -85,18 +102,8 @@ class RecordViewController: UIViewController, AVAudioRecorderDelegate {
                 print("error")
             }
         }
-//        soundRef.downloadURL { (url, error) in
-//            if let error = error {
-//                print("Error retreving url: \(error)")
-//            }   else {
-//                do {
-//                    self.vc.audioPlayer = try AVAudioPlayer(contentsOf: self.url)
-//                    print("Success putting url to audioPlayer")
-//                }   catch {
-//                    print("eror putting url to audioPlayer")
-//                }
-//            }
-//        }
+        
+        //
     }
     
     func downloadUrl() {
@@ -136,7 +143,7 @@ class RecordViewController: UIViewController, AVAudioRecorderDelegate {
         }   else {
             //Stopping Audio Recording
             audioRecorder.stop()
-    
+            
             print("AudioRecorder url is: \(audioRecorder.url)")
             print("url String is: \(String(describing: urlString))")
             

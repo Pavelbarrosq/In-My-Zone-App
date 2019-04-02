@@ -32,8 +32,6 @@ class SignUpViewController: UIViewController, UINavigationControllerDelegate, UI
         db = Firestore.firestore()
         storage = Storage.storage()
         
-        addPhoto.layer.cornerRadius = 40
-        
         self.hideKeyboardWhenTappedAround() 
         
         Design.shared.setBackground(view: view)
@@ -51,8 +49,8 @@ class SignUpViewController: UIViewController, UINavigationControllerDelegate, UI
         let imageTap = UITapGestureRecognizer(target: self, action: #selector(openImagePicker(_:)))
         addPhoto.isUserInteractionEnabled = true
         addPhoto.addGestureRecognizer(imageTap)
-        addPhoto.layer.cornerRadius = addPhoto.bounds.height / 2
-//        addPhoto.clipsToBounds = true
+        addPhoto.layer.cornerRadius = addPhoto.frame.height/2
+        addPhoto.clipsToBounds = true
         
         
         

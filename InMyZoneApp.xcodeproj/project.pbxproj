@@ -17,6 +17,7 @@
 		CD31BDCB2239166C00EDAEA8 /* Notification.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CD31BDCA2239166C00EDAEA8 /* Notification.storyboard */; };
 		CD31BDCD223916B200EDAEA8 /* Profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CD31BDCC223916B200EDAEA8 /* Profile.storyboard */; };
 		CD36835322380AE700EF0C28 /* Navigation.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CD36835222380AE700EF0C28 /* Navigation.storyboard */; };
+		CD4035042253582B009EE647 /* FeedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD4035032253582B009EE647 /* FeedCell.swift */; };
 		CD5C8758224BAE7E002A1D54 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD5C8757224BAE7E002A1D54 /* Post.swift */; };
 		CD8E4EF52232D26B006FE2E6 /* StartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD8E4EF42232D26B006FE2E6 /* StartViewController.swift */; };
 		CD8E4EF72232D27B006FE2E6 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD8E4EF62232D27B006FE2E6 /* SignUpViewController.swift */; };
@@ -70,6 +71,7 @@
 		CD31BDCA2239166C00EDAEA8 /* Notification.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Notification.storyboard; sourceTree = "<group>"; };
 		CD31BDCC223916B200EDAEA8 /* Profile.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Profile.storyboard; sourceTree = "<group>"; };
 		CD36835222380AE700EF0C28 /* Navigation.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Navigation.storyboard; sourceTree = "<group>"; };
+		CD4035032253582B009EE647 /* FeedCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedCell.swift; sourceTree = "<group>"; };
 		CD5C8757224BAE7E002A1D54 /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
 		CD8E4EF42232D26B006FE2E6 /* StartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartViewController.swift; sourceTree = "<group>"; };
 		CD8E4EF62232D27B006FE2E6 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
@@ -151,6 +153,7 @@
 		CDBEC5F92247FC0200B3CD90 /* Custom Cell */ = {
 			isa = PBXGroup;
 			children = (
+				CD4035032253582B009EE647 /* FeedCell.swift */,
 			);
 			path = "Custom Cell";
 			sourceTree = "<group>";
@@ -402,6 +405,7 @@
 				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
 				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
+				"${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework",
 				"${BUILT_PRODUCTS_DIR}/gRPC-C++/grpcpp.framework",
 				"${BUILT_PRODUCTS_DIR}/gRPC-Core/grpc.framework",
 				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
@@ -415,6 +419,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDWebImage.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/grpcpp.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/grpc.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
@@ -505,6 +510,7 @@
 				CD5C8758224BAE7E002A1D54 /* Post.swift in Sources */,
 				CDDABE022231871A0069BB9C /* NotificationViewController.swift in Sources */,
 				CDDABDCE223173010069BB9C /* AppDelegate.swift in Sources */,
+				CD4035042253582B009EE647 /* FeedCell.swift in Sources */,
 				CD202D4C223FB8FD0079E6EA /* Design.swift in Sources */,
 				CDDABE04223187210069BB9C /* ProfileViewController.swift in Sources */,
 				CD8E4EF72232D27B006FE2E6 /* SignUpViewController.swift in Sources */,
