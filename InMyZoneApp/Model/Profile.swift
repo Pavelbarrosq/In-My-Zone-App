@@ -2,14 +2,14 @@
 //  Profile.swift
 //  InMyZoneApp
 //
-//  Created by Pavel Barros Quintanilla on 2019-04-01.
+//  Created by Pavel Barros Quintanilla on 2019-04-03.
 //  Copyright © 2019 Pavel Barros Quintanilla. All rights reserved.
 //
 
 import Foundation
 import Firebase
 
-class Profile{
+class Profile {
     
     var username: String
     var email: String
@@ -35,4 +35,5 @@ class Profile{
                 "email": email,
                 "photoUrl": photoUrl]
     }
+    
 }

@@ -9,41 +9,71 @@
 import UIKit
 import Firebase
 
-class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class HomeViewController: UIViewController, UITableViewDataSource {
     
-    @IBOutlet weak var sessionTableView: UITableView!
     
-    var ref: DocumentReference? = nil
+
+    @IBOutlet weak var tableView: UITableView!
+    
+    var posts = [Post]()
+    var userInfoArray = [UserInfo]()
     var db: Firestore!
-    var documentArrray: [GetPost] = []
-    var postUuid: String?
     
+   
     override func viewDidLoad() {
         super.viewDidLoad()
+
         db = Firestore.firestore()
-        self.hideKeyboardWhenTappedAround()
-        Design.shared.setBackground(view: view)
-        sessionTableView.delegate = self
-        sessionTableView.dataSource = self
+        tableView.dataSource = self
         
-        var vc = RecordViewController()
+        loadUserInfo()
         
-        postUuid = vc.currentUuid
-        
-        
-       
-        
-        
-        
-        sessionTableView.register(UINib(nibName: "SessionCell", bundle: nil), forCellReuseIdentifier: "customSessionCell")
-        
-        
-        
-        // Do any additional setup after loading the view.
-    }
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
         loadPost()
+        
+//        var post = Post(postDescription: "test", audioUrl: "url")
+//        print(post.postDescription)
+//        print(post.audioUrl)
+        
+        Design.shared.setBackground(view: view)
+
+    }
+    
+    func loadPost() {
+        let postRef = db.collection("posts")
+        
+        postRef.getDocuments { (snapshot, error) in
+            if error != nil {
+                print("Error: \(error)")
+            }   else {
+                if let snapshot = snapshot {
+                    for docs in snapshot.documents {
+                        if let dict = docs.data() as? [String: Any] {
+                            let description = dict["postDescription"] as! String
+                            let url = dict["audioUrl"] as! String
+                            let post = Post(postDescription: description, audioUrl: url)
+                            self.posts.append(post)
+                            print(self.posts)
+                            
+                            self.tableView.reloadData()
+                        }
+                    }
+                }
+            }
+        }
+    }
+    
+    func loadUserInfo () {
+        let userUid = Auth.auth().currentUser?.uid
+        let profileRef = db.collection("users").whereField("\(userUid)", isEqualTo: true)
+        profileRef.getDocuments { (snapshot, error) in
+            if error != nil {
+                print("Error getting userInfo: \(error)")
+            }   else {
+                for document in snapshot!.documents {
+                    print("\(document.documentID) => \(document.data())")
+                }
+            }
+        }
     }
     
     @IBAction func logoutButton(_ sender: UIBarButtonItem) {
@@ -62,62 +92,19 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
         let startVC = storyboard.instantiateViewController(withIdentifier: "StartViewControllerID")
         self.present(startVC, animated: true, completion: nil)
     }
-    
-    func loadPost() {
-        guard let user = Auth.auth().currentUser else {return}
+
         
-        let itemRef = self.db.collection("users").document("\(user.uid)").collection("posts")
-        itemRef.addSnapshotListener { (snapshot, error) in
-            if let error = error {
-                print("Error listnening: \(error)")
-            }   else {
-                if let snapshot = snapshot {
-                    
-//                    let description =  snapshot.get("postDescription") as? String
-//                    print(description)
-//
-                    for docs in snapshot.documents {
-                        let docs = docs.data()
-                        let postD = docs["postDescrition"] as? String ?? "NoDescription Available"
-                        let postA = GetPost(postDescrition: postD)
-                        self.documentArrray.append(postA)
-                    }
-//                    if let data = snapshot.data(){
-//                        let description = data["postDescrition"] as? String ?? ""
-//
-//                        let newPost = GetPost(postDescrition: description)
-//                        self.documentArrray.append(newPost)
-//
-//
-//                        print("!!!!!!!!!!!! \( description)")
-                    } else {
-                        print("!!!!! data nil")
-                    }
-                    //                    for document in snapshot.documentID {
-                    //
-                    //                    }
-                }
-            
-                print(self.documentArrray.count)
-                self.sessionTableView.reloadData()
-            }
-        }
-        
-    
-    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return documentArrray.count
-        
+        return posts.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let newpost =  documentArrray[indexPath.row]
-        let cell = tableView.dequeueReusableCell(withIdentifier: "PostCell", for: indexPath) as! FeedCell
-        cell.addCellData(post:newpost )
-        cell.backgroundColor = UIColor.lightGray
+        let cell = tableView.dequeueReusableCell(withIdentifier: "PostCell", for: indexPath)
+        cell.textLabel?.text = posts[indexPath.row].postDescription
+        cell.backgroundColor = UIColor.gray
         return cell
     }
     
-    
+
     
 }

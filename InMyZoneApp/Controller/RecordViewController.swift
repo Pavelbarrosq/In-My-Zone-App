@@ -14,9 +14,9 @@ import FirebaseAuth
 
 class RecordViewController: UIViewController, AVAudioRecorderDelegate {
     
-    @IBOutlet weak var recordButtonImage: UIButton!
-    @IBOutlet weak var recordingLabel: UILabel!
-    @IBOutlet weak var descriptionTextField: UITextField!
+    @IBOutlet weak var recordButton: UIButton!
+    @IBOutlet weak var shareButton: UIButton!
+    @IBOutlet weak var descriptionTextView: UITextView!
     
     var db: Firestore!
     var auth: Auth!
@@ -26,17 +26,19 @@ class RecordViewController: UIViewController, AVAudioRecorderDelegate {
     var recordingSession: AVAudioSession!
     var audioRecorder: AVAudioRecorder!
     var audioPlayer: AVAudioPlayer!
-    var urlString = ""
+    var audioUrl: String?
     var url: URL!
+    var urlString = ""
     
     var currentUuid: String!
-    
-    
-    var vc = HomeViewController()
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.hideKeyboardWhenTappedAround()
+        
+        Design.shared.setButton(button: shareButton)
+        Design.shared.setBackground(view: view)
         
         db = Firestore.firestore()
         auth = Auth.auth()
@@ -44,7 +46,8 @@ class RecordViewController: UIViewController, AVAudioRecorderDelegate {
         
         url = getFileURL()
         
-        Design.shared.setBackground(view: view)
+        print("URL = \(url)")
+        
         
         recordingSession = AVAudioSession.sharedInstance()
         
@@ -53,110 +56,88 @@ class RecordViewController: UIViewController, AVAudioRecorderDelegate {
                 print("Accepted")
             }
         }
-        
     }
-    @IBAction func shareButton(_ sender: UIButton) {
-        
-        let post = Post(audioURL: urlString, postDescription: descriptionTextField.text!)
-        
-        guard let user = auth.currentUser else {return}
-        
-        let itemref = db.collection("users").document(user.uid).collection("posts")
-        itemref.addDocument(data: post.toAny()) { (error) in
-            if error != nil {
-                print("Error when performing add: \(error?.localizedDescription) ")
-            }   else {
-                print("Succes adding") 
-            }
-        }
+    
+    @IBAction func shareButtonAction(_ sender: UIButton) {
         
         let uuid = NSUUID().uuidString
-        currentUuid = uuid
+        guard let user = auth.currentUser else {return}
+        
         let soundRef = storage.reference().child("audio/\(uuid)")
         print("current UUID is : \(uuid)")
         let uploadTask = soundRef.putFile(from: url , metadata: nil) {
             metadata, error in
             if let metadata = metadata {
                 
-                soundRef.downloadURL { (url, error) in
-                    if let error = error {
-                        print("Error retreving url: \(error)")
-                    }   else {
-                        
-                        url 
-                        
-                        do {
-//                            self.vc.audioPlayer = try AVAudioPlayer(contentsOf: self.url)
-                            print("Success putting url to audioPlayer")
-                        }   catch {
-                            print("eror putting url to audioPlayer")
+                    self.removeAudioItem()
+//                    let url = self.getFileURL()
+//                    try FileManager.default.removeItem(at: url)
+                    
+                    
+                    soundRef.downloadURL { (url, error) in
+                        if error != nil {
+                            print("An error occured: \(error)")
+                        }   else {
+                            self.audioUrl = url?.absoluteString
+                            print("Succes retreving audio URL")
+                            
+                            print("Current UUID for record is !!!!!!!!!: \(uuid)")
+                            
+                            let itemref = self.db.collection("posts")
+                            itemref.addDocument(data: ["postDescription": self.descriptionTextView.text,
+                                                       "audioUrl": self.audioUrl!]) { (error) in
+                                                        if error != nil {
+                                                            print("Error while adding doc: \(error)")
+                                                        }
+                                                        self.descriptionTextView.text = nil
+                                                        self.tabBarController?.selectedIndex = 0
+                            }
                         }
                     }
-                }
                 
-                do {
-                    let url = self.getFileURL()
-                    try FileManager.default.removeItem(at: url)
-                } catch {}
             } else {
                 print("error")
             }
         }
-        
-        //
     }
     
-    func downloadUrl() {
-    }
-    
-    @IBAction func playButton(_ sender: UIButton) {
+    func removeAudioItem() {
         do {
-            audioPlayer = try AVAudioPlayer(contentsOf: getFileURL() as URL)
-        } catch let error as NSError {
-            print("Error: \(error.localizedDescription)")
+            let url = self.getFileURL()
+            try FileManager.default.removeItem(at: url)
+            print("Success removing item from url")
+        } catch {
+            print("error removing item from url")
         }
-        audioPlayer.prepareToPlay()
-        audioPlayer.volume = 10.0
-        audioPlayer.play()
-        print("url String: \(String(describing: urlString))")
     }
     
-    @IBAction func recordButton(_ sender: UIButton) {
+    @IBAction func recordAudio(_ sender: UIButton) {
+        
         if audioRecorder == nil {
+            let image = UIImage(named: "stop-96")
+            recordButton.setImage(image, for: .normal)
             
             let fileName = getFileURL()
             
             let settings = [AVFormatIDKey: Int(kAudioFormatMPEG4AAC), AVSampleRateKey: 12000, AVNumberOfChannelsKey: 1, AVEncoderAudioQualityKey: AVAudioQuality.high.rawValue]
             
-            // Start Audio Recording
+            // Start recording
             do {
-                recordingLabel.text = "Press To Stop Session"
                 audioRecorder = try AVAudioRecorder(url: fileName, settings: settings)
                 audioRecorder.delegate = self
                 audioRecorder.record()
-                
-                let image = UIImage(named: "stop-96")
-                recordButtonImage.setImage(image, for: .normal)
             }   catch {
-                displayAlert(title: "Ops!", message: "Recording Failed")
+                displayAlert(title: "Ops!", message: "Recording failed")
             }
         }   else {
-            //Stopping Audio Recording
+            // Stopping audio Recorder
             audioRecorder.stop()
             
-            print("AudioRecorder url is: \(audioRecorder.url)")
-            print("url String is: \(String(describing: urlString))")
+            let image = UIImage(named: "record-96")
+            recordButton.setImage(image, for: .normal)
             
             audioRecorder = nil
-            
-            let image = UIImage(named: "record-96")
-            recordButtonImage.setImage(image, for: .normal)
-            
-            DispatchQueue.main.asyncAfter(deadline:.now() + 1.0, execute: {
-                self.performSegue(withIdentifier:"sessionToEdit",sender: self)
-            })
         }
-        
         
     }
     
