@@ -12,6 +12,7 @@ pod 'Firebase/Database'
 pod 'Firebase/Storage'
 pod 'Firebase/Firestore'
 pod 'SDWebImage'
+pod 'Spring', :git => 'https://github.com/MengTo/Spring.git'
 
   target 'InMyZoneAppTests' do
     inherit! :search_paths

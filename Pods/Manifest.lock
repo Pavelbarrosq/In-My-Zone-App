@@ -118,6 +118,7 @@ PODS:
   - SDWebImage (4.4.6):
     - SDWebImage/Core (= 4.4.6)
   - SDWebImage/Core (4.4.6)
+  - Spring (1.0.6)
 
 DEPENDENCIES:
   - Firebase/Auth
@@ -126,6 +127,7 @@ DEPENDENCIES:
   - Firebase/Firestore
   - Firebase/Storage
   - SDWebImage
+  - Spring (from `https://github.com/MengTo/Spring.git`)
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
@@ -149,6 +151,15 @@ SPEC REPOS:
     - Protobuf
     - SDWebImage
 
+EXTERNAL SOURCES:
+  Spring:
+    :git: https://github.com/MengTo/Spring.git
+
+CHECKOUT OPTIONS:
+  Spring:
+    :commit: fafd0b2e8d4d46405bd86fa7ba84bb7f73a20b13
+    :git: https://github.com/MengTo/Spring.git
+
 SPEC CHECKSUMS:
   BoringSSL-GRPC: 2a230d9cd93e7ce39916044f645cebb31f37dde6
   Firebase: 2f5235e62f141cb86181c3af0dfe4509706351ac
@@ -169,7 +180,8 @@ SPEC CHECKSUMS:
   nanopb: 2901f78ea1b7b4015c860c2fdd1ea2fee1a18d48
   Protobuf: 7a877b7f3e5964e3fce995e2eb323dbc6831bb5a
   SDWebImage: 3f3f0c02f09798048c47a5ed0a13f17b063572d8
+  Spring: 3d113f14575ef79aec9c5f906dfa4f5001c03254
 
-PODFILE CHECKSUM: c5654cb618526d8eb5d8b3235307d282b5135423
+PODFILE CHECKSUM: e825e9eb578b0618047a206bd99f2de7b5f29b06
 
 COCOAPODS: 1.5.3

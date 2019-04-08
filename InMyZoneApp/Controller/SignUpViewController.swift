@@ -66,28 +66,18 @@ class SignUpViewController: UIViewController, UINavigationControllerDelegate, UI
     }
     
     @objc func textFieldsCheck() {
-        
         guard let username = usernameTextField.text, !username.isEmpty, let email = emailTextfield.text, !email.isEmpty, let password = passwordTextField.text, !password.isEmpty, let password2 = repeatPassword.text, !password2.isEmpty else {
-            
             signInButton.setTitleColor(UIColor.lightText, for: .normal)
             signInButton.layer.borderColor = UIColor.lightText.cgColor
-            
             return
-            
         }
-        
         signInButton.setTitleColor(UIColor(red: 148/255, green: 55/255, blue: 255/255, alpha: 1), for: .normal)
         signInButton.layer.borderColor = UIColor(red: 148/255, green: 55/255, blue: 255/255, alpha: 1).cgColor
         signInButton.isEnabled = true
-        
     }
 
-        
-
     @IBAction func signUpButton(_ sender: UIButton) {
-        
         if passwordTextField.text != repeatPassword.text {
-            
             let alertController = UIAlertController(title: "Password do not match", message: "Retype passwords", preferredStyle: .alert)
             let alertAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
             

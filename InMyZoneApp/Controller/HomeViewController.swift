@@ -24,10 +24,10 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        Design.shared.setBackground(view: view)
         db = Firestore.firestore()
         tableView.dataSource = self
         tableView.delegate = self
-        
 
         
         loadPost()
@@ -35,8 +35,6 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
 //        var post = Post(postDescription: "test", audioUrl: "url")
 //        print(post.postDescription)
 //        print(post.audioUrl)
-        
-        Design.shared.setBackground(view: view)
 
     }
     
@@ -120,8 +118,10 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
         let newPost = posts[indexPath.row]
         let cell = tableView.dequeueReusableCell(withIdentifier: "PostCell", for: indexPath) as! FeedCell
         cell.postDescriptionView.text = posts[indexPath.row].postDescription
+        cell.profileImage.layer.cornerRadius = cell.profileImage.frame.height / 2
         cell.addCellData(post: newPost)
-        cell.backgroundColor = UIColor.gray
+        cell.backgroundColor = UIColor.black
+        Design.shared.setButton(button: cell.playAudioButton)
         return cell
     }
     

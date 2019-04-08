@@ -17,6 +17,7 @@ class FeedCell: UITableViewCell {
     @IBOutlet weak var postDescriptionView: UITextView!
     @IBOutlet weak var profileImage: UIImageView!
     @IBOutlet weak var usernameLabel: UILabel!
+    @IBOutlet weak var playAudioButton: UIButton!
     
     var username: String!
     var profilePicUrl: String!
