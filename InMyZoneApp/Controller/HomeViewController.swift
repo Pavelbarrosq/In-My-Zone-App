@@ -9,14 +9,15 @@
 import UIKit
 import Firebase
 
-class HomeViewController: UIViewController, UITableViewDataSource {
+class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     
 
     @IBOutlet weak var tableView: UITableView!
     
+    var postListener: ListenerRegistration?
     var posts = [Post]()
-    var userInfoArray = [UserInfo]()
+    
     var db: Firestore!
     
    
@@ -25,8 +26,9 @@ class HomeViewController: UIViewController, UITableViewDataSource {
 
         db = Firestore.firestore()
         tableView.dataSource = self
+        tableView.delegate = self
         
-        loadUserInfo()
+
         
         loadPost()
         
@@ -40,40 +42,56 @@ class HomeViewController: UIViewController, UITableViewDataSource {
     
     func loadPost() {
         let postRef = db.collection("posts")
-        
-        postRef.getDocuments { (snapshot, error) in
+        postListener = postRef.addSnapshotListener({ (snapshot, error) in
             if error != nil {
-                print("Error: \(error)")
+                print("Error listening \(error)")
             }   else {
-                if let snapshot = snapshot {
-                    for docs in snapshot.documents {
-                        if let dict = docs.data() as? [String: Any] {
-                            let description = dict["postDescription"] as! String
-                            let url = dict["audioUrl"] as! String
-                            let post = Post(postDescription: description, audioUrl: url)
-                            self.posts.append(post)
-                            print(self.posts)
-                            
-                            self.tableView.reloadData()
-                        }
-                    }
-                }
-            }
-        }
-    }
-    
-    func loadUserInfo () {
-        let userUid = Auth.auth().currentUser?.uid
-        let profileRef = db.collection("users").whereField("\(userUid)", isEqualTo: true)
-        profileRef.getDocuments { (snapshot, error) in
-            if error != nil {
-                print("Error getting userInfo: \(error)")
-            }   else {
+                self.posts.removeAll()
                 for document in snapshot!.documents {
-                    print("\(document.documentID) => \(document.data())")
+                    let data = document.data()
+                    let description = data["postDescription"] as! String ?? ""
+                    let url = data["audioUrl"] as! String ?? ""
+                    let post = Post(postDescription: description, audioUrl: url)
+                    self.posts.append(post)
                 }
             }
-        }
+            self.tableView.reloadData()
+            print("Succes obtaining data")
+        })
+        
+//        postRef.getDocuments { (snapshot, error) in
+//            if error != nil {
+//                print("Error: \(error)")
+//            }   else {
+//                if let snapshot = snapshot {
+//                    for docs in snapshot.documents {
+//                        if let dict = docs.data() as? [String: Any] {
+//                            let description = dict["postDescription"] as! String
+//                            let url = dict["audioUrl"] as! String
+//                            let post = Post(postDescription: description, audioUrl: url)
+//                            self.posts.append(post)
+//                            print(self.posts)
+//
+//                            self.tableView.reloadData()
+//                        }
+//                    }
+//                }
+//            }
+//        }
+//    }
+//    
+//    func loadUserInfo () {
+//        let userUid = Auth.auth().currentUser?.uid
+//        let profileRef = db.collection("users").whereField("\(userUid)", isEqualTo: true)
+//        profileRef.getDocuments { (snapshot, error) in
+//            if error != nil {
+//                print("Error getting userInfo: \(error)")
+//            }   else {
+//                for document in snapshot!.documents {
+//                    print("\(document.documentID) => \(document.data())")
+//                }
+//            }
+//        }
     }
     
     @IBAction func logoutButton(_ sender: UIBarButtonItem) {
@@ -99,8 +117,10 @@ class HomeViewController: UIViewController, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "PostCell", for: indexPath)
-        cell.textLabel?.text = posts[indexPath.row].postDescription
+        let newPost = posts[indexPath.row]
+        let cell = tableView.dequeueReusableCell(withIdentifier: "PostCell", for: indexPath) as! FeedCell
+        cell.postDescriptionView.text = posts[indexPath.row].postDescription
+        cell.addCellData(post: newPost)
         cell.backgroundColor = UIColor.gray
         return cell
     }
