@@ -47,9 +47,10 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
                 self.posts.removeAll()
                 for document in snapshot!.documents {
                     let data = document.data()
-                    let description = data["postDescription"] as! String ?? ""
-                    let url = data["audioUrl"] as! String ?? ""
-                    let post = Post(postDescription: description, audioUrl: url)
+                    let description = data["postDescription"] as? String ?? ""
+                    guard let url = data["audioUrl"] as? String else {return}
+                    guard let userId = data["userId"] as? String else {return}
+                    let post = Post(postDescription: description, audioUrl: url, userUid: userId)
                     self.posts.append(post)
                 }
             }
@@ -122,6 +123,9 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
         cell.addCellData(post: newPost)
         cell.backgroundColor = UIColor.black
         Design.shared.setButton(button: cell.playAudioButton)
+        
+        
+        
         return cell
     }
     

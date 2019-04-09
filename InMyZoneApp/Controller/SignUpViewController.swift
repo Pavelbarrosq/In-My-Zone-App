@@ -93,7 +93,7 @@ class SignUpViewController: UIViewController, UINavigationControllerDelegate, UI
                     
                     let image = self.addPhoto.image
                     let imageData = image!.jpegData(compressionQuality: 0.5)
-                    let uploadImage = storageRef.putData(imageData!, metadata: nil) { (query, error) in
+                    storageRef.putData(imageData!, metadata: nil) { (query, error) in
                         print("Upload success")
                         storageRef.downloadURL(completion: { (url, error) in
                             if let error = error {
@@ -106,7 +106,7 @@ class SignUpViewController: UIViewController, UINavigationControllerDelegate, UI
                                     let profileInfo = Profile(username: self.usernameTextField.text!, email: self.emailTextfield.text!, photoUrl: self.profileImageURL)
                                     itemRef.setData(profileInfo.toAny(), completion: { (error) in
                                         if error != nil {
-                                            print(error)
+                                            print(error!)
                                         } else {
                                             print("Document added with userInfo")
                                             self.performSegue(withIdentifier: "signUpToHome", sender: self)

@@ -19,29 +19,30 @@ class FeedCell: UITableViewCell {
     @IBOutlet weak var usernameLabel: UILabel!
     @IBOutlet weak var playAudioButton: UIButton!
     
-    var username: String!
-    var profilePicUrl: String!
+    var username: String?
+    var profilePicUrl: String?
     
     var db = Firestore.firestore()
     
     func addCellData(post: Post) {
-        getUserInfo()
+        getUserInfo(post: post)
     }
     
     
-    func getUserInfo() {
+    func getUserInfo(post: Post) {
         guard let auth = Auth.auth().currentUser else {return}
-        let userRef = db.collection("users").document(auth.uid)
+        let uid = post.userUid
+        let userRef = db.collection("users").document(uid)
         userRef.getDocument { (document, error) in
             if error != nil {
                 print("Error getting doc : \(error)")
             }   else {
                 if let document = document {
                     let docData = document.data()
-                    self.username = docData!["username"] as? String ?? ""
+                    self.username = docData?["username"] as? String ?? ""
                     self.usernameLabel.text = self.username
-                    self.profilePicUrl = docData!["photoUrl"] as? String ?? ""
-                    self.profileImage.sd_setImage(with: URL(string: self.profilePicUrl), placeholderImage: UIImage(named: "profilePlaceholder"))
+                    self.profilePicUrl = docData?["photoUrl"] as? String ?? ""
+                    self.profileImage.sd_setImage(with: URL(string: self.profilePicUrl!), placeholderImage: UIImage(named: "profilePlaceholder"))
                 }
             }
         }

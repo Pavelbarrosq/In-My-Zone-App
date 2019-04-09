@@ -11,9 +11,12 @@ import Foundation
 class Post {
     var postDescription: String
     var audioUrl: String
+    var userUid: String
+   
     
-    init(postDescription: String, audioUrl: String) {
+    init(postDescription: String, audioUrl: String, userUid: String) {
         self.postDescription = postDescription
         self.audioUrl = audioUrl
+        self.userUid = userUid
     }
 }
