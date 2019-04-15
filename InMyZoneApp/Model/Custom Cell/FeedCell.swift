@@ -21,6 +21,10 @@ class FeedCell: UITableViewCell {
     
     var username: String?
     var profilePicUrl: String?
+    var recordUrl: String?
+    
+    
+    var audioPlayer: AVAudioPlayer?
     
     var db = Firestore.firestore()
     
@@ -35,7 +39,7 @@ class FeedCell: UITableViewCell {
         let userRef = db.collection("users").document(uid)
         userRef.getDocument { (document, error) in
             if error != nil {
-                print("Error getting doc : \(error)")
+                print("Error getting doc : \(String(describing: error))")
             }   else {
                 if let document = document {
                     let docData = document.data()
@@ -48,4 +52,29 @@ class FeedCell: UITableViewCell {
         }
     }
     
+    
+    @IBAction func playAudio(_ sender: UIButton) {
+        print("!!!!!!!\(recordUrl!)")
+        
+        let ref = Storage.storage().reference(forURL: recordUrl!)
+        ref.getData(maxSize: 100 * 1024 * 1024) {
+            data, error in
+            if let error = error {
+                print("Error retreving data \(error.localizedDescription)")
+            } else {
+                do {
+                    let dataPath = data
+                    
+                    self.audioPlayer = try AVAudioPlayer(data: dataPath!)
+                    self.audioPlayer?.prepareToPlay()
+                    self.audioPlayer?.volume = 10.0
+//                    self.audioPlayer!.pan = 0.0
+                    self.audioPlayer?.play()
+                } catch {
+                    print("!!!")
+                }
+            }
+        }
+    }
+  
 }

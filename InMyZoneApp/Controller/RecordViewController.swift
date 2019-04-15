@@ -63,7 +63,7 @@ class RecordViewController: UIViewController, AVAudioRecorderDelegate {
         let uuid = NSUUID().uuidString
         guard let user = auth.currentUser else {return}
         
-        let soundRef = storage.reference().child("audio/\(uuid)")
+        let soundRef = storage.reference().child("audio/\(uuid)") // .m4a
         print("current UUID is : \(uuid)")
         let uploadTask = soundRef.putFile(from: url , metadata: nil) {
             metadata, error in
@@ -138,6 +138,8 @@ class RecordViewController: UIViewController, AVAudioRecorderDelegate {
             recordButton.setImage(image, for: .normal)
             
             audioRecorder = nil
+            
+          
         }
         
     }

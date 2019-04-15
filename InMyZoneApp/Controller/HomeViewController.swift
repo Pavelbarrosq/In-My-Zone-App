@@ -8,6 +8,7 @@
 
 import UIKit
 import Firebase
+import AVFoundation
 
 class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
@@ -15,6 +16,7 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
 
     @IBOutlet weak var tableView: UITableView!
     
+    var recordingSession: AVAudioSession!
     var postListener: ListenerRegistration?
     var posts = [Post]()
     
@@ -24,11 +26,22 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        recordingSession = AVAudioSession.sharedInstance()
+        AVAudioSession.sharedInstance().requestRecordPermission { (hasPermission) in
+            if hasPermission {
+                print("Accepted")
+            }
+        }
+        
         Design.shared.setBackground(view: view)
         db = Firestore.firestore()
         tableView.dataSource = self
         tableView.delegate = self
-
+        
+//        AVAudioSession.sharedInstance().requestRecordPermission { (hasPermission) in
+//            if hasPermission {
+//                print("Accepted")
+//            }
         
         loadPost()
         
@@ -36,6 +49,73 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
 //        print(post.postDescription)
 //        print(post.audioUrl)
 
+        
+        play()
+    }
+    
+    func getDocumentsDirectory() -> URL {
+        let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
+        return paths[0]
+    }
+    
+    func getFileURL() -> URL {
+        let path = getDocumentsDirectory().appendingPathComponent("recording.m4a")
+      
+        return path as URL
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+//        let ref = Storage.storage().reference(forURL: "gs://inmyzomeapp.appspot.com/audio/14BF672C-075F-4918-85D1-14DE0420B182")
+//
+//
+//        let downloadTask = ref.write(toFile: getFileURL() ){
+//            url, error in
+//
+//            var audioPlayer : AVAudioPlayer!
+//            do {
+//                audioPlayer = try AVAudioPlayer(contentsOf: self.getFileURL() as URL)
+//            } catch let error as NSError {
+//                print("Error: \(error.localizedDescription)")
+//            }
+//            audioPlayer.prepareToPlay()
+//            audioPlayer.volume = 10.0
+//            audioPlayer.play()
+//
+        
+        
+//        ref.getData(maxSize: 100 * 1024 * 1024) {
+//            data, error in
+//            if let error = error {
+//                print("!!!! error")
+//            } else {
+//                do {
+//                    print("!!! ja")
+//                    let player = try AVAudioPlayer(data: data!)
+//                    player.prepareToPlay()
+//
+//                    player.volume = 10.0
+//                    player.play()
+//
+//                } catch {
+//                    print("!!!")
+//                }
+//            }
+//        }
+    }
+    
+    
+    func play() {
+        //guard let url = URL(string: recordUrl!) else {return}
+        
+        
+        let url = URL(string: "//https://firebasestorage.googleapis.com/v0/b/inmyzomeapp.appspot.com/o/audio%2F14BF672C-075F-4918-85D1-14DE0420B182?alt=media&token=dfcb5ca9-8b50-4592-a784-53332a9bdc90")
+        let playerItem = AVPlayerItem(url: url!)
+        let player = AVPlayer(playerItem: playerItem)
+        
+        
+        player.play()
+        
+        
     }
     
     func loadPost() {
@@ -119,6 +199,8 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
         let newPost = posts[indexPath.row]
         let cell = tableView.dequeueReusableCell(withIdentifier: "PostCell", for: indexPath) as! FeedCell
         cell.postDescriptionView.text = posts[indexPath.row].postDescription
+        cell.recordUrl = posts[indexPath.row].audioUrl
+    //   cell.audioPlayer?.delegate = self
         cell.profileImage.layer.cornerRadius = cell.profileImage.frame.height / 2
         cell.addCellData(post: newPost)
         cell.backgroundColor = UIColor.black
