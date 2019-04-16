@@ -18,6 +18,7 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
     var recordingSession: AVAudioSession!
     var postListener: ListenerRegistration?
+    var postSorter: ListenerRegistration?
     var posts = [Post]()
     
     var db: Firestore!
@@ -38,89 +39,15 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
         tableView.dataSource = self
         tableView.delegate = self
         
-//        AVAudioSession.sharedInstance().requestRecordPermission { (hasPermission) in
-//            if hasPermission {
-//                print("Accepted")
-//            }
-        
         loadPost()
         
-//        var post = Post(postDescription: "test", audioUrl: "url")
-//        print(post.postDescription)
-//        print(post.audioUrl)
 
-        
-        play()
     }
-    
-    func getDocumentsDirectory() -> URL {
-        let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
-        return paths[0]
-    }
-    
-    func getFileURL() -> URL {
-        let path = getDocumentsDirectory().appendingPathComponent("recording.m4a")
-      
-        return path as URL
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-//        let ref = Storage.storage().reference(forURL: "gs://inmyzomeapp.appspot.com/audio/14BF672C-075F-4918-85D1-14DE0420B182")
-//
-//
-//        let downloadTask = ref.write(toFile: getFileURL() ){
-//            url, error in
-//
-//            var audioPlayer : AVAudioPlayer!
-//            do {
-//                audioPlayer = try AVAudioPlayer(contentsOf: self.getFileURL() as URL)
-//            } catch let error as NSError {
-//                print("Error: \(error.localizedDescription)")
-//            }
-//            audioPlayer.prepareToPlay()
-//            audioPlayer.volume = 10.0
-//            audioPlayer.play()
-//
-        
-        
-//        ref.getData(maxSize: 100 * 1024 * 1024) {
-//            data, error in
-//            if let error = error {
-//                print("!!!! error")
-//            } else {
-//                do {
-//                    print("!!! ja")
-//                    let player = try AVAudioPlayer(data: data!)
-//                    player.prepareToPlay()
-//
-//                    player.volume = 10.0
-//                    player.play()
-//
-//                } catch {
-//                    print("!!!")
-//                }
-//            }
-//        }
-    }
-    
-    
-    func play() {
-        //guard let url = URL(string: recordUrl!) else {return}
-        
-        
-        let url = URL(string: "//https://firebasestorage.googleapis.com/v0/b/inmyzomeapp.appspot.com/o/audio%2F14BF672C-075F-4918-85D1-14DE0420B182?alt=media&token=dfcb5ca9-8b50-4592-a784-53332a9bdc90")
-        let playerItem = AVPlayerItem(url: url!)
-        let player = AVPlayer(playerItem: playerItem)
-        
-        
-        player.play()
-        
-        
-    }
+
     
     func loadPost() {
         let postRef = db.collection("posts")
-        postListener = postRef.addSnapshotListener({ (snapshot, error) in
+        postListener = postRef.order(by: "timestamp", descending: true).addSnapshotListener({ (snapshot, error) in
             if error != nil {
                 print("Error listening \(error)")
             }   else {
@@ -132,46 +59,31 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
                     guard let userId = data["userId"] as? String else {return}
                     let post = Post(postDescription: description, audioUrl: url, userUid: userId)
                     self.posts.append(post)
+                    
                 }
             }
             self.tableView.reloadData()
             print("Succes obtaining data")
         })
-        
-//        postRef.getDocuments { (snapshot, error) in
-//            if error != nil {
-//                print("Error: \(error)")
-//            }   else {
-//                if let snapshot = snapshot {
-//                    for docs in snapshot.documents {
-//                        if let dict = docs.data() as? [String: Any] {
-//                            let description = dict["postDescription"] as! String
-//                            let url = dict["audioUrl"] as! String
-//                            let post = Post(postDescription: description, audioUrl: url)
-//                            self.posts.append(post)
-//                            print(self.posts)
+    }
+    
+//    func sortPosts() {
+//        let postRef = db.collection("posts")
+//        postSorter = postRef.order(by: "timestamp", descending: true).addSnapshotListener { (snapshot, error) in
+//            if let error = error {
+//                print("Error getting documents: \(error.localizedDescription)")
+//            } else {
+//                guard let snapshot = snapshot else { return }
 //
-//                            self.tableView.reloadData()
-//                        }
-//                    }
+//               self.posts.removeAll()
+//                for document in snapshot.documents {
+//                    let sorter = Post(snapshot: document)
+//                    self.posts.append(sorter)
 //                }
+//                self.tableView.reloadData()
 //            }
 //        }
 //    }
-//    
-//    func loadUserInfo () {
-//        let userUid = Auth.auth().currentUser?.uid
-//        let profileRef = db.collection("users").whereField("\(userUid)", isEqualTo: true)
-//        profileRef.getDocuments { (snapshot, error) in
-//            if error != nil {
-//                print("Error getting userInfo: \(error)")
-//            }   else {
-//                for document in snapshot!.documents {
-//                    print("\(document.documentID) => \(document.data())")
-//                }
-//            }
-//        }
-    }
     
     @IBAction func logoutButton(_ sender: UIBarButtonItem) {
         
@@ -200,15 +112,18 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
         let cell = tableView.dequeueReusableCell(withIdentifier: "PostCell", for: indexPath) as! FeedCell
         cell.postDescriptionView.text = posts[indexPath.row].postDescription
         cell.recordUrl = posts[indexPath.row].audioUrl
-    //   cell.audioPlayer?.delegate = self
         cell.profileImage.layer.cornerRadius = cell.profileImage.frame.height / 2
+        Design.shared.setButton(button: cell.playAudioButton)
         cell.addCellData(post: newPost)
         cell.backgroundColor = UIColor.black
-        Design.shared.setButton(button: cell.playAudioButton)
-        
-        
+        Design.shared.adjustUITextViewHeight(arg: cell.postDescriptionView)
         
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        
+        return UITableView.automaticDimension
     }
     
 

@@ -22,7 +22,8 @@ class FeedCell: UITableViewCell {
     var username: String?
     var profilePicUrl: String?
     var recordUrl: String?
-    
+    var userId: String?
+
     
     var audioPlayer: AVAudioPlayer?
     

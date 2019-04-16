@@ -86,7 +86,8 @@ class RecordViewController: UIViewController, AVAudioRecorderDelegate {
                             let itemref = self.db.collection("posts")
                             itemref.addDocument(data: ["postDescription": self.descriptionTextView.text,
                                                        "audioUrl": self.audioUrl!,
-                                                       "userId": user.uid   ]) { (error) in
+                                                       "userId": user.uid,
+                                                       "timestamp": FieldValue.serverTimestamp()]) { (error) in
                                                         if error != nil {
                                                             print("Error while adding doc: \(error)")
                                                         }
@@ -101,6 +102,8 @@ class RecordViewController: UIViewController, AVAudioRecorderDelegate {
             }
         }
     }
+    
+    
     
     func removeAudioItem() {
         do {
