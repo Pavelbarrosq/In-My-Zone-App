@@ -47,7 +47,7 @@ class Design {
     
     func adjustUITextViewHeight(arg : UITextView)
     {
-        arg.translatesAutoresizingMaskIntoConstraints = true
+//        arg.translatesAutoresizingMaskIntoConstraints = true
         arg.sizeToFit()
         arg.isScrollEnabled = false
     }

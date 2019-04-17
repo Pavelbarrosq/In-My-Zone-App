@@ -66,24 +66,7 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
             print("Succes obtaining data")
         })
     }
-    
-//    func sortPosts() {
-//        let postRef = db.collection("posts")
-//        postSorter = postRef.order(by: "timestamp", descending: true).addSnapshotListener { (snapshot, error) in
-//            if let error = error {
-//                print("Error getting documents: \(error.localizedDescription)")
-//            } else {
-//                guard let snapshot = snapshot else { return }
-//
-//               self.posts.removeAll()
-//                for document in snapshot.documents {
-//                    let sorter = Post(snapshot: document)
-//                    self.posts.append(sorter)
-//                }
-//                self.tableView.reloadData()
-//            }
-//        }
-//    }
+
     
     @IBAction func logoutButton(_ sender: UIBarButtonItem) {
         
