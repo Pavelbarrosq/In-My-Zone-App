@@ -18,6 +18,7 @@
 		CD31BDCB2239166C00EDAEA8 /* Notification.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CD31BDCA2239166C00EDAEA8 /* Notification.storyboard */; };
 		CD31BDCD223916B200EDAEA8 /* Profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CD31BDCC223916B200EDAEA8 /* Profile.storyboard */; };
 		CD36835322380AE700EF0C28 /* Navigation.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CD36835222380AE700EF0C28 /* Navigation.storyboard */; };
+		CD52DE40226C802700829B7B /* ProfileCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD52DE3F226C802700829B7B /* ProfileCell.swift */; };
 		CD5B7ED8225A6D6B004642BB /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD5B7ED7225A6D6B004642BB /* Post.swift */; };
 		CD5B7EDA225A7F11004642BB /* UserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD5B7ED9225A7F11004642BB /* UserInfo.swift */; };
 		CD5B7EDC225B5BE7004642BB /* FeedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD5B7EDB225B5BE7004642BB /* FeedCell.swift */; };
@@ -73,6 +74,7 @@
 		CD31BDCA2239166C00EDAEA8 /* Notification.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Notification.storyboard; sourceTree = "<group>"; };
 		CD31BDCC223916B200EDAEA8 /* Profile.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Profile.storyboard; sourceTree = "<group>"; };
 		CD36835222380AE700EF0C28 /* Navigation.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Navigation.storyboard; sourceTree = "<group>"; };
+		CD52DE3F226C802700829B7B /* ProfileCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileCell.swift; sourceTree = "<group>"; };
 		CD5B7ED7225A6D6B004642BB /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
 		CD5B7ED9225A7F11004642BB /* UserInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfo.swift; sourceTree = "<group>"; };
 		CD5B7EDB225B5BE7004642BB /* FeedCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedCell.swift; sourceTree = "<group>"; };
@@ -156,6 +158,7 @@
 			isa = PBXGroup;
 			children = (
 				CD5B7EDB225B5BE7004642BB /* FeedCell.swift */,
+				CD52DE3F226C802700829B7B /* ProfileCell.swift */,
 			);
 			path = "Custom Cell";
 			sourceTree = "<group>";
@@ -521,6 +524,7 @@
 				CDDABDFE223187030069BB9C /* SearchViewController.swift in Sources */,
 				CD5B7EDC225B5BE7004642BB /* FeedCell.swift in Sources */,
 				CD8E4EF92232D283006FE2E6 /* LoginViewController.swift in Sources */,
+				CD52DE40226C802700829B7B /* ProfileCell.swift in Sources */,
 				CD5B7EDA225A7F11004642BB /* UserInfo.swift in Sources */,
 				CDDABDFC223186C70069BB9C /* HomeViewController.swift in Sources */,
 			);

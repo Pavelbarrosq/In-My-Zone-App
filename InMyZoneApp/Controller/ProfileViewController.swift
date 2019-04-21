@@ -9,8 +9,10 @@
 import UIKit
 import Firebase
 import SDWebImage
+import AVFoundation
 
-class ProfileViewController: UIViewController {
+class ProfileViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+  
 
     @IBOutlet weak var profilePicture: UIImageView!
     @IBOutlet weak var usernameLabel: UILabel!
@@ -18,20 +20,35 @@ class ProfileViewController: UIViewController {
     @IBOutlet weak var followersLabel: UILabel!
     @IBOutlet weak var followingLabel: UILabel!
     @IBOutlet weak var editBarButton: UIBarButtonItem!
+    @IBOutlet weak var tableView: UITableView!
     
     var isTapped = false
     var db = Firestore.firestore()
     var profilePicUrl: String?
     var username: String?
     var userListener: ListenerRegistration?
+    var ownPosts: [ProfilePost] = []
+    var postListener: ListenerRegistration?
+    var recordingSession: AVAudioSession!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.hideKeyboardWhenTappedAround()
         Design.shared.setBackground(view: view)
         
+        recordingSession = AVAudioSession.sharedInstance()
+        AVAudioSession.sharedInstance().requestRecordPermission { (hasPermission) in
+            if hasPermission {
+                print("Accepted")
+            }
+        }
+        
+        tableView.dataSource = self
+        tableView.delegate = self
+        
         getUserprofile()
         getAboutMeText()
+        loadProfilePost()
         
         Design.shared.adjustUITextViewHeight(arg: aboutMeTextView)
         
@@ -98,33 +115,47 @@ class ProfileViewController: UIViewController {
                 }
             }
         }
-
-        
-//        guard let auth = Auth.auth().currentUser else {return}
-//        let uid = Auth.auth().currentUser?.uid
-//        let userRef = db.collection("users").document("\(uid)")
-//        userRef.getDocument { (document, error) in
-//            if error != nil {
-//                print("Error getting doc : \(String(describing: error))")
-//            }   else {
-//                if let document = document {
-//                    let docData = document.data()
-//                    self.username = docData?["username"] as? String ?? ""
-//                    self.usernameLabel.text = self.username
-//                    self.profilePicUrl = docData?["photoUrl"] as? String ?? ""
-//                    self.profilePicture.sd_setImage(with: URL(string: self.profilePicUrl!), placeholderImage: UIImage(named: "profilePlaceholder"))
-//                }
-//            }
-//        }
     }
     
+    func loadProfilePost() {
+        let uid = Auth.auth().currentUser?.uid
+        let postRef = db.collection("users").document(uid!).collection("userposts")
+        postListener = postRef.order(by: "timestamp", descending: true).addSnapshotListener { (snapshot, error) in
+            if error != nil {
+                print("Error: \(error)")
+            } else {
+                self.ownPosts.removeAll()
+                for document in snapshot!.documents {
+                    let data = document.data()
+                    guard let description = data["postDescription"] as? String else {return}
+                    guard let url = data["audioUrl"] as? String else {return}
+                    let profilePost = ProfilePost(postDescription: description, userUid: uid!, audioUrl: url)
+                    self.ownPosts.append(profilePost)
+                }
+            }
+            self.tableView.reloadData()
+            print("Success profile Data!!!!!")
+        }
+    }
     
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return ownPosts.count
+    }
+
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let newPost = ownPosts[indexPath.row]
+        let cell = tableView.dequeueReusableCell(withIdentifier: "ProfileCell", for: indexPath) as! ProfileCell
+        cell.postDescription.text = ownPosts[indexPath.row].postDescription
+        cell.recordUrl = ownPosts[indexPath.row].audioUrl
+        Design.shared.adjustUITextViewHeight(arg: cell.postDescription)
+        Design.shared.setButton(button: cell.playButton)
+        cell.addCellData(post: newPost)
+        return cell
+    }
     
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        
+        return UITableView.automaticDimension
+    }
     
-//    func changeBarButtonToSave() {
-//        self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .save, target: self, action: nil)
-//    }
-//    func changeBarButtonToEdit() {
-//        self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .edit, target: self, action: nil)
-//    }
 }

@@ -36,3 +36,23 @@ class Post {
                 "timestamp": timestamp]
     }
 }
+
+class ProfilePost {
+    var postDescription: String
+    var userUid: String
+    var timestamp: Date!
+    var audioUrl: String
+    
+    init(postDescription: String, userUid: String, audioUrl: String) {
+        self.postDescription = postDescription
+        self.userUid = userUid
+        self.audioUrl = audioUrl
+    }
+    
+    func toAny() -> [String: Any] {
+        return ["postDescription": postDescription,
+                "userUid": userUid,
+                "timestamp": timestamp,
+                "audioUrl": audioUrl]
+    }
+}

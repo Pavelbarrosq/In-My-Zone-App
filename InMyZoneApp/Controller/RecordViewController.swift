@@ -30,6 +30,7 @@ class RecordViewController: UIViewController, AVAudioRecorderDelegate {
     var url: URL!
     var urlString = ""
     
+    
     var currentUuid: String!
 
     
@@ -91,6 +92,7 @@ class RecordViewController: UIViewController, AVAudioRecorderDelegate {
                                                         if error != nil {
                                                             print("Error while adding doc: \(error)")
                                                         }
+                                                        self.addPostToProfile()
                                                         self.descriptionTextView.text = nil
                                                         self.tabBarController?.selectedIndex = 0
                             }
@@ -103,7 +105,15 @@ class RecordViewController: UIViewController, AVAudioRecorderDelegate {
         }
     }
     
-    
+    func addPostToProfile() {
+        guard let uid = Auth.auth().currentUser?.uid else {return}
+        let ref = db.collection("users").document(uid).collection("userposts")
+        ref.addDocument(data: ["postDescription": self.descriptionTextView.text,
+                               "audioUrl": self.audioUrl!,
+                               "userId": uid,
+                               "timestamp": FieldValue.serverTimestamp()])
+        
+    }
     
     func removeAudioItem() {
         do {
