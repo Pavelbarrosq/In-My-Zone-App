@@ -19,7 +19,7 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
     @IBOutlet weak var aboutMeTextView: UITextView!
     @IBOutlet weak var followersLabel: UILabel!
     @IBOutlet weak var followingLabel: UILabel!
-    @IBOutlet weak var editBarButton: UIBarButtonItem!
+    @IBOutlet weak var editButton: UIButton!
     @IBOutlet weak var tableView: UITableView!
     
     var isTapped = false
@@ -52,6 +52,7 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
         
         Design.shared.adjustUITextViewHeight(arg: aboutMeTextView)
         
+        
         profilePicture.layer.cornerRadius = profilePicture.frame.height/2
         profilePicture.clipsToBounds = true
 
@@ -67,19 +68,28 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
         // Pass the selected object to the new view controller.
     }
     */
-    @IBAction func editButtonPressed(_ sender: UIBarButtonItem) {
+    @IBAction func editButtonPressed(_ sender: UIButton) {
         if aboutMeTextView.isEditable == false {
             aboutMeTextView.isEditable = true
+            editButton.setTitle("Save", for: .highlighted)
+            aboutMeTextView.layer.cornerRadius = 20.0
+            aboutMeTextView.backgroundColor = .white
+            aboutMeTextView.textColor = .black
+            
         } else {
             aboutMeTextView.isEditable = false
             let uid = Auth.auth().currentUser?.uid
             let postRef = db.collection("users").document(uid!)
             postRef.setData(["aboutMe": aboutMeTextView.text], merge: true)
-            aboutMeTextView.text = nil
             
-            getAboutMeText()
+            aboutMeTextView.backgroundColor = .clear
+            aboutMeTextView.textColor = .white
+            editButton.setTitle("Edit", for: .normal)
         }
     }
+//    let uid = Auth.auth().currentUser?.uid
+//    let postRef = db.collection("users").document(uid!)
+//    postRef.setData(["aboutMe": aboutMeTextView.text], merge: true)
     
     func getAboutMeText () {
         let uid = Auth.auth().currentUser?.uid
