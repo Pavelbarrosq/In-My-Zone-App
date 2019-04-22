@@ -1,0 +1,12 @@
+
+/* Class = "UIButton"; normalTitle = "Play"; ObjectID = "NOG-ID-hLr"; */
+"NOG-ID-hLr.normalTitle" = "Spela upp";
+
+/* Class = "UINavigationItem"; title = "Feed"; ObjectID = "UCG-u9-oH3"; */
+"UCG-u9-oH3.title" = "Flöde";
+
+/* Class = "UIBarButtonItem"; title = "Logout"; ObjectID = "bz9-8o-nT0"; */
+"bz9-8o-nT0.title" = "Logga ut";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "qCG-eo-3Iv"; */
+"qCG-eo-3Iv.text" = "Label";

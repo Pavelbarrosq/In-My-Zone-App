@@ -1,0 +1,27 @@
+
+/* Class = "UIButton"; normalTitle = "FOLLOW"; ObjectID = "BZq-UE-YvB"; */
+"BZq-UE-YvB.normalTitle" = "FÖLJ";
+
+/* Class = "UIButton"; normalTitle = "MESSAGE"; ObjectID = "JlP-XO-cNA"; */
+"JlP-XO-cNA.normalTitle" = "MEDDELANDE";
+
+/* Class = "UILabel"; text = "FOLLOWERS"; ObjectID = "ONh-Ro-k3b"; */
+"ONh-Ro-k3b.text" = "FÖLJARE";
+
+/* Class = "UILabel"; text = "24k"; ObjectID = "TQd-hW-15k"; */
+"TQd-hW-15k.text" = "24k";
+
+/* Class = "UILabel"; text = "FOLLOWING"; ObjectID = "Udo-CF-F3d"; */
+"Udo-CF-F3d.text" = "FOLLOWING";
+
+/* Class = "UILabel"; text = "965"; ObjectID = "e8n-ud-WyR"; */
+"e8n-ud-WyR.text" = "965";
+
+/* Class = "UILabel"; text = "username"; ObjectID = "ghs-OJ-8nB"; */
+"ghs-OJ-8nB.text" = "username";
+
+/* Class = "UIButton"; normalTitle = "Edit"; ObjectID = "lLM-yo-wcB"; */
+"lLM-yo-wcB.normalTitle" = "Redigera";
+
+/* Class = "UINavigationItem"; title = "Profile"; ObjectID = "x4g-ll-0Cs"; */
+"x4g-ll-0Cs.title" = "Profile";

@@ -71,7 +71,7 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
     @IBAction func editButtonPressed(_ sender: UIButton) {
         if aboutMeTextView.isEditable == false {
             aboutMeTextView.isEditable = true
-            editButton.setTitle("Save", for: .highlighted)
+            editButton.setTitle("Save", for: .normal)
             aboutMeTextView.layer.cornerRadius = 20.0
             aboutMeTextView.backgroundColor = .white
             aboutMeTextView.textColor = .black

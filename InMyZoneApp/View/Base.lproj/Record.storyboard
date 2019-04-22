@@ -10,7 +10,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Session-->
+        <!--Record-->
         <scene sceneID="sBS-oN-OHB">
             <objects>
                 <viewController id="SOj-35-RIh" customClass="RecordViewController" customModule="InMyZoneApp" customModuleProvider="target" sceneMemberID="viewController">
@@ -35,6 +35,7 @@
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uK9-Os-1ZQ">
                                         <rect key="frame" x="101" y="11" width="266" height="98"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                     </textView>
                                 </subviews>
@@ -70,7 +71,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="1xe-LH-tyr"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Session" id="dgw-9f-fpQ"/>
+                    <navigationItem key="navigationItem" title="Record" id="dgw-9f-fpQ"/>
                     <connections>
                         <outlet property="descriptionTextView" destination="uK9-Os-1ZQ" id="i6Y-C7-iwj"/>
                         <outlet property="recordButton" destination="GFt-4P-rMq" id="60i-Gv-lHO"/>

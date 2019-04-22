@@ -1,0 +1,54 @@
+
+/* Class = "UITextField"; placeholder = "    "; ObjectID = "0YT-0i-EEx"; */
+"0YT-0i-EEx.placeholder" = "    ";
+
+/* Class = "UITextField"; placeholder = "Enter Password"; ObjectID = "1Tm-CZ-gPv"; */
+"1Tm-CZ-gPv.placeholder" = "Slå in lösenord";
+
+/* Class = "UILabel"; text = "Password"; ObjectID = "1tu-75-eTK"; */
+"1tu-75-eTK.text" = "Lösenord";
+
+/* Class = "UILabel"; text = "Username"; ObjectID = "2DP-Os-OcA"; */
+"2DP-Os-OcA.text" = "Användarnamn";
+
+/* Class = "UIButton"; normalTitle = "LOGIN"; ObjectID = "7AL-eJ-pMO"; */
+"7AL-eJ-pMO.normalTitle" = "LOGGA IN";
+
+/* Class = "UITextField"; placeholder = "   "; ObjectID = "FwU-eU-U42"; */
+"FwU-eU-U42.placeholder" = "   ";
+
+/* Class = "UILabel"; text = "Fill in Information"; ObjectID = "NZx-Aw-JNc"; */
+"NZx-Aw-JNc.text" = "Fyll i information";
+
+/* Class = "UILabel"; text = "Repeat Password"; ObjectID = "Qzc-yO-SEk"; */
+"Qzc-yO-SEk.text" = "Upprepa lösenord";
+
+/* Class = "UITextField"; placeholder = "    "; ObjectID = "Rzl-DX-L8n"; */
+"Rzl-DX-L8n.placeholder" = "    ";
+
+/* Class = "UITextField"; placeholder = "   "; ObjectID = "Yhn-lR-5Ln"; */
+"Yhn-lR-5Ln.placeholder" = "   ";
+
+/* Class = "UIButton"; normalTitle = "SignUp"; ObjectID = "bzj-Yu-BEi"; */
+"bzj-Yu-BEi.normalTitle" = "Bli medlem";
+
+/* Class = "UIButton"; normalTitle = "SIGNUP"; ObjectID = "goM-To-8TF"; */
+"goM-To-8TF.normalTitle" = "BLI MEDLEM";
+
+/* Class = "UIButton"; normalTitle = "Login"; ObjectID = "j6s-vi-3xQ"; */
+"j6s-vi-3xQ.normalTitle" = "Logga in";
+
+/* Class = "UILabel"; text = "Email"; ObjectID = "kKT-qf-kmJ"; */
+"kKT-qf-kmJ.text" = "E-post";
+
+/* Class = "UIButton"; normalTitle = "<"; ObjectID = "n5B-6q-VYO"; */
+"n5B-6q-VYO.normalTitle" = "<";
+
+/* Class = "UIButton"; normalTitle = "Show"; ObjectID = "vAv-sP-eqm"; */
+"vAv-sP-eqm.normalTitle" = "Visa";
+
+/* Class = "UITextField"; placeholder = "Enter Email"; ObjectID = "xze-tc-LqZ"; */
+"xze-tc-LqZ.placeholder" = "Slå in E-post";
+
+/* Class = "UIButton"; normalTitle = "<"; ObjectID = "y4m-vP-5Y0"; */
+"y4m-vP-5Y0.normalTitle" = "<";
