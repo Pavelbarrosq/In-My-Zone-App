@@ -50,7 +50,7 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
         getAboutMeText()
         loadProfilePost()
         
-        Design.shared.adjustUITextViewHeight(arg: aboutMeTextView)
+//        Design.shared.adjustUITextViewHeight(arg: aboutMeTextView)
         
         
         profilePicture.layer.cornerRadius = profilePicture.frame.height/2

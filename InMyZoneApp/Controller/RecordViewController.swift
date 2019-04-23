@@ -12,7 +12,7 @@ import FirebaseFirestore
 import FirebaseStorage
 import FirebaseAuth
 
-class RecordViewController: UIViewController, AVAudioRecorderDelegate {
+class RecordViewController: UIViewController {// , AVAudioRecorderDelegate {
     
     @IBOutlet weak var recordButton: UIButton!
     @IBOutlet weak var shareButton: UIButton!
@@ -30,10 +30,10 @@ class RecordViewController: UIViewController, AVAudioRecorderDelegate {
     var url: URL!
     var urlString = ""
     
+    var recording = false
     
     var currentUuid: String!
 
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.hideKeyboardWhenTappedAround()
@@ -45,9 +45,18 @@ class RecordViewController: UIViewController, AVAudioRecorderDelegate {
         auth = Auth.auth()
         storage = Storage.storage()
         
-        url = getFileURL()
+        let fileName = getFileURL()
         
-        print("URL = \(url)")
+        
+        let settings = [AVFormatIDKey: Int(kAudioFormatMPEG4AAC), AVSampleRateKey: 12000, AVNumberOfChannelsKey: 1, AVEncoderAudioQualityKey: AVAudioQuality.high.rawValue]
+        
+        do {
+            audioRecorder = try AVAudioRecorder(url: fileName, settings: settings)
+            audioRecorder.prepareToRecord()
+           
+        }   catch {
+            displayAlert(title: "Ops!", message: "Recording failed")
+        }
         
         
         recordingSession = AVAudioSession.sharedInstance()
@@ -57,6 +66,21 @@ class RecordViewController: UIViewController, AVAudioRecorderDelegate {
                 print("Accepted")
             }
         }
+    }
+   
+    override func viewDidAppear(_ animated: Bool) {
+        audioRecorder.record()
+        audioRecorder.stop()
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+                do {
+                    let url = getFileURL()
+                    try FileManager.default.removeItem(at: url)
+                    print("Success removing item from url")
+                } catch {
+                    print("error removing item from url")
+                }
     }
     
     @IBAction func shareButtonAction(_ sender: UIButton) {
@@ -126,32 +150,44 @@ class RecordViewController: UIViewController, AVAudioRecorderDelegate {
     }
     
     @IBAction func recordAudio(_ sender: UIButton) {
+        print("start record ")
         
-        if audioRecorder == nil {
+        if !recording { //audioRecorder == nil {
+            recording = true
+            print("start record 2 ")
             let image = UIImage(named: "stop-96")
             recordButton.setImage(image, for: .normal)
-            
-            let fileName = getFileURL()
-            
-            let settings = [AVFormatIDKey: Int(kAudioFormatMPEG4AAC), AVSampleRateKey: 12000, AVNumberOfChannelsKey: 1, AVEncoderAudioQualityKey: AVAudioQuality.high.rawValue]
-            
+
+          
             // Start recording
-            do {
-                audioRecorder = try AVAudioRecorder(url: fileName, settings: settings)
-                audioRecorder.delegate = self
+           // do {
+          //      audioRecorder = try AVAudioRecorder(url: fileName, settings: settings)
+              //  audioRecorder.delegate = self
                 audioRecorder.record()
-            }   catch {
-                displayAlert(title: "Ops!", message: "Recording failed")
-            }
+                print("recording")
+//            }   catch {
+//                displayAlert(title: "Ops!", message: "Recording failed")
+//            }
         }   else {
             // Stopping audio Recorder
+            recording = false
             audioRecorder.stop()
             
             let image = UIImage(named: "record-96")
             recordButton.setImage(image, for: .normal)
             
-            audioRecorder = nil
+          //  audioRecorder = nil
             
+            do {
+                audioPlayer = try AVAudioPlayer(contentsOf: getFileURL() as URL)
+            } catch let error as NSError {
+                print("Error: \(error.localizedDescription)")
+            }
+            audioPlayer.prepareToPlay()
+            audioPlayer.volume = 10.0
+            audioPlayer.play()
+            print("url String: \(String(describing: urlString))")
+
           
         }
         

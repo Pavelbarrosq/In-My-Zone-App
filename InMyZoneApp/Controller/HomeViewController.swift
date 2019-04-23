@@ -39,9 +39,13 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
         tableView.dataSource = self
         tableView.delegate = self
         
-        loadPost()
+//        loadPost()
         
 
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        loadPost()
     }
 
     
@@ -99,15 +103,15 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
         Design.shared.setButton(button: cell.playAudioButton)
         cell.addCellData(post: newPost)
         cell.backgroundColor = UIColor.black
-        Design.shared.adjustUITextViewHeight(arg: cell.postDescriptionView)
+//        Design.shared.adjustUITextViewHeight(arg: cell.postDescriptionView)
         
         return cell
     }
     
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        
-        return UITableView.automaticDimension
-    }
+//    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+//
+//        return UITableView.automaticDimension
+//    }
     
 
     

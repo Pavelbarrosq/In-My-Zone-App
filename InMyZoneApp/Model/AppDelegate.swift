@@ -46,6 +46,25 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func applicationWillTerminate(_ application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+        func getDocumentsDirectory() -> URL {
+            let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
+            return paths[0]
+        }
+
+        func getFileURL() -> URL {
+            let path = getDocumentsDirectory().appendingPathComponent("recording.m4a")
+            return path as URL
+        }
+
+        do {
+            let url = getFileURL()
+            try FileManager.default.removeItem(at: url)
+            print("Success removing item from url while closing app")
+        } catch {
+            print("error removing item from url while closing app")
+        }
+        
+        
     }
 
 
