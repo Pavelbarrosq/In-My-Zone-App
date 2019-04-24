@@ -52,7 +52,8 @@ class SignUpViewController: UIViewController, UINavigationControllerDelegate, UI
         addPhoto.layer.cornerRadius = addPhoto.frame.height/2
         addPhoto.clipsToBounds = true
         
-        
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
         
     }
     
