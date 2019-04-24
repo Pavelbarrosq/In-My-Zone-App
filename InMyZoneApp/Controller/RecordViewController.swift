@@ -15,7 +15,6 @@ import FirebaseAuth
 class RecordViewController: UIViewController {// , AVAudioRecorderDelegate {
     
     @IBOutlet weak var recordButton: UIButton!
-    @IBOutlet weak var shareButton: UIButton!
     @IBOutlet weak var descriptionTextView: UITextView!
     
     var db: Firestore!
@@ -38,8 +37,10 @@ class RecordViewController: UIViewController {// , AVAudioRecorderDelegate {
         super.viewDidLoad()
         self.hideKeyboardWhenTappedAround()
         
-        Design.shared.setButton(button: shareButton)
+        descriptionTextView.layer.cornerRadius = 20.0
+        
         Design.shared.setBackground(view: view)
+        Design.shared.adjustUITextViewHeight(arg: descriptionTextView)
         
         db = Firestore.firestore()
         auth = Auth.auth()
@@ -82,9 +83,7 @@ class RecordViewController: UIViewController {// , AVAudioRecorderDelegate {
                     print("error removing item from url")
                 }
     }
-    
-    @IBAction func shareButtonAction(_ sender: UIButton) {
-        
+    @IBAction func shareBarButtonAction(_ sender: UIBarButtonItem) {
         let uuid = NSUUID().uuidString
         guard let user = auth.currentUser else {return}
         
@@ -94,34 +93,34 @@ class RecordViewController: UIViewController {// , AVAudioRecorderDelegate {
             metadata, error in
             if let metadata = metadata {
                 
-                    self.removeAudioItem()
-//                    let url = self.getFileURL()
-//                    try FileManager.default.removeItem(at: url)
-                    
-                    
-                    soundRef.downloadURL { (url, error) in
-                        if error != nil {
-                            print("An error occured: \(error)")
-                        }   else {
-                            self.audioUrl = url?.absoluteString
-                            print("Succes retreving audio URL")
-                            
-                            print("Current UUID for record is !!!!!!!!!: \(uuid)")
-                            
-                            let itemref = self.db.collection("posts")
-                            itemref.addDocument(data: ["postDescription": self.descriptionTextView.text,
-                                                       "audioUrl": self.audioUrl!,
-                                                       "userId": user.uid,
-                                                       "timestamp": FieldValue.serverTimestamp()]) { (error) in
-                                                        if error != nil {
-                                                            print("Error while adding doc: \(error)")
-                                                        }
-                                                        self.addPostToProfile()
-                                                        self.descriptionTextView.text = nil
-                                                        self.tabBarController?.selectedIndex = 0
-                            }
+                self.removeAudioItem()
+                //                    let url = self.getFileURL()
+                //                    try FileManager.default.removeItem(at: url)
+                
+                
+                soundRef.downloadURL { (url, error) in
+                    if error != nil {
+                        print("An error occured: \(error)")
+                    }   else {
+                        self.audioUrl = url?.absoluteString
+                        print("Succes retreving audio URL")
+                        
+                        print("Current UUID for record is !!!!!!!!!: \(uuid)")
+                        
+                        let itemref = self.db.collection("posts")
+                        itemref.addDocument(data: ["postDescription": self.descriptionTextView.text,
+                                                   "audioUrl": self.audioUrl!,
+                                                   "userId": user.uid,
+                                                   "timestamp": FieldValue.serverTimestamp()]) { (error) in
+                                                    if error != nil {
+                                                        print("Error while adding doc: \(error)")
+                                                    }
+                                                    self.addPostToProfile()
+                                                    self.descriptionTextView.text = nil
+                                                    self.tabBarController?.selectedIndex = 0
                         }
                     }
+                }
                 
             } else {
                 print("error")

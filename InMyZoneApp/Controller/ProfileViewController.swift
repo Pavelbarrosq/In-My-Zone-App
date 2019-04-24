@@ -168,4 +168,19 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
         return UITableView.automaticDimension
     }
     
+    @IBAction func signOutButton(_ sender: UIBarButtonItem) {
+        do {
+            try Auth.auth().signOut()
+        }
+            
+        catch let signOutError as NSError {
+            
+            print("There was an error signing out \(signOutError)")
+            
+        }
+        
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let startVC = storyboard.instantiateViewController(withIdentifier: "StartViewControllerID")
+        self.present(startVC, animated: true, completion: nil)
+    }
 }
