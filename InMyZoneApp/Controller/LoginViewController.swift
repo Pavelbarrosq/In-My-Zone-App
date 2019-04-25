@@ -9,6 +9,7 @@
 import UIKit
 import Firebase
 import FirebaseDatabase
+import SVProgressHUD
 
 class LoginViewController: UIViewController {
 
@@ -75,10 +76,12 @@ class LoginViewController: UIViewController {
     }
     
     @IBAction func loginButton(_ sender: UIButton) {
-        
+        SVProgressHUD.show(withStatus: "Loggin in...")
         Auth.auth().signIn(withEmail: email.text!, password: password.text!) { (user, error) in
             if error == nil {
+                
                 self.performSegue(withIdentifier: "loginToHome", sender: self)
+                SVProgressHUD.dismiss()
             }   else {
                 let alertController = UIAlertController(title: "Error", message: error?.localizedDescription, preferredStyle: .alert)
                 let alertAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)

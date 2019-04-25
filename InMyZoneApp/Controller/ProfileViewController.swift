@@ -36,6 +36,8 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
         self.hideKeyboardWhenTappedAround()
         Design.shared.setBackground(view: view)
         
+        editButton.setTitle("\(NSLocalizedString("EEN", comment: ""))", for: .normal)
+        
         recordingSession = AVAudioSession.sharedInstance()
         AVAudioSession.sharedInstance().requestRecordPermission { (hasPermission) in
             if hasPermission {
@@ -74,7 +76,7 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
     @IBAction func editButtonPressed(_ sender: UIButton) {
         if aboutMeTextView.isEditable == false {
             aboutMeTextView.isEditable = true
-            editButton.setTitle("Save", for: .normal)
+            editButton.setTitle("\(NSLocalizedString("SEN", comment: ""))", for: .normal)
             aboutMeTextView.layer.cornerRadius = 20.0
             aboutMeTextView.backgroundColor = .white
             aboutMeTextView.textColor = .black
@@ -87,7 +89,7 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
             
             aboutMeTextView.backgroundColor = .clear
             aboutMeTextView.textColor = .white
-            editButton.setTitle("Edit", for: .normal)
+            editButton.setTitle("\(NSLocalizedString("EEN", comment: ""))", for: .normal)
         }
     }
 //    let uid = Auth.auth().currentUser?.uid

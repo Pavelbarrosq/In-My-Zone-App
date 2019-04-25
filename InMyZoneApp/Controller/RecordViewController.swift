@@ -38,7 +38,6 @@ class RecordViewController: UIViewController {// , AVAudioRecorderDelegate {
         self.hideKeyboardWhenTappedAround()
         
         descriptionTextView.layer.cornerRadius = 20.0
-        
         Design.shared.setBackground(view: view)
         Design.shared.adjustUITextViewHeight(arg: descriptionTextView)
         
@@ -47,14 +46,11 @@ class RecordViewController: UIViewController {// , AVAudioRecorderDelegate {
         storage = Storage.storage()
         
         let fileName = getFileURL()
-        
-        
         let settings = [AVFormatIDKey: Int(kAudioFormatMPEG4AAC), AVSampleRateKey: 12000, AVNumberOfChannelsKey: 1, AVEncoderAudioQualityKey: AVAudioQuality.high.rawValue]
         
         do {
             audioRecorder = try AVAudioRecorder(url: fileName, settings: settings)
             audioRecorder.prepareToRecord()
-           
         }   catch {
             displayAlert(title: "Ops!", message: "Recording failed")
         }
@@ -179,18 +175,16 @@ class RecordViewController: UIViewController {// , AVAudioRecorderDelegate {
             
           //  audioRecorder = nil
             
-            do {
-                audioPlayer = try AVAudioPlayer(contentsOf: getFileURL() as URL)
-            } catch let error as NSError {
-                print("Error: \(error.localizedDescription)")
-            }
-            audioPlayer.prepareToPlay()
-            audioPlayer.volume = 10.0
-            audioPlayer.play()
-            print("url String: \(String(describing: urlString))")
-
-          
-        }
+//            do {
+//                audioPlayer = try AVAudioPlayer(contentsOf: getFileURL() as URL)
+//            } catch let error as NSError {
+//                print("Error: \(error.localizedDescription)")
+//            }
+//            audioPlayer.prepareToPlay()
+//            audioPlayer.volume = 10.0
+//            audioPlayer.play()
+//            print("url String: \(String(describing: urlString))")
+        }                
         
     }
     

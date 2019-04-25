@@ -1,0 +1,10 @@
+/* 
+  Localizable.strings
+  InMyZoneApp
+
+  Created by Pavel Barros Quintanilla on 2019-04-25.
+  Copyright © 2019 Pavel Barros Quintanilla. All rights reserved.
+*/
+
+"EEN" = "Redigera";
+"SEN" = "Spara";

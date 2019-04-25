@@ -38,6 +38,7 @@
 		CDDABE00223187110069BB9C /* RecordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDDABDFF223187110069BB9C /* RecordViewController.swift */; };
 		CDDABE022231871A0069BB9C /* NotificationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDDABE012231871A0069BB9C /* NotificationViewController.swift */; };
 		CDDABE04223187210069BB9C /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDDABE03223187210069BB9C /* ProfileViewController.swift */; };
+		CDE178D82271B251009F217F /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = CDE178DA2271B251009F217F /* Localizable.strings */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -105,6 +106,8 @@
 		CDDABDFF223187110069BB9C /* RecordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordViewController.swift; sourceTree = "<group>"; };
 		CDDABE012231871A0069BB9C /* NotificationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationViewController.swift; sourceTree = "<group>"; };
 		CDDABE03223187210069BB9C /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		CDE178D92271B251009F217F /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		CDE178DB2271B25F009F217F /* sv */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = sv; path = sv.lproj/Localizable.strings; sourceTree = "<group>"; };
 		E2FA64707AC939B802E32813 /* Pods-InMyZoneAppTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-InMyZoneAppTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-InMyZoneAppTests/Pods-InMyZoneAppTests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -171,6 +174,7 @@
 		CDDABDC1223173010069BB9C = {
 			isa = PBXGroup;
 			children = (
+				CDE178DA2271B251009F217F /* Localizable.strings */,
 				CDDABDCC223173010069BB9C /* InMyZoneApp */,
 				CDDABDE1223173020069BB9C /* InMyZoneAppTests */,
 				CDDABDEC223173020069BB9C /* InMyZoneAppUITests */,
@@ -376,6 +380,7 @@
 			files = (
 				CDDABDD8223173010069BB9C /* LaunchScreen.storyboard in Resources */,
 				CD838409226DEC6A00E4FD4C /* Record.storyboard in Resources */,
+				CDE178D82271B251009F217F /* Localizable.strings in Resources */,
 				CDBBC1F5226DE7420023D9AE /* Profile.storyboard in Resources */,
 				CD31BDCB2239166C00EDAEA8 /* Notification.storyboard in Resources */,
 				CD8E4EFB2232DE6B006FE2E6 /* GoogleService-Info.plist in Resources */,
@@ -418,6 +423,7 @@
 				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
 				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
 				"${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework",
+				"${BUILT_PRODUCTS_DIR}/SVProgressHUD/SVProgressHUD.framework",
 				"${BUILT_PRODUCTS_DIR}/Spring/Spring.framework",
 				"${BUILT_PRODUCTS_DIR}/gRPC-C++/grpcpp.framework",
 				"${BUILT_PRODUCTS_DIR}/gRPC-Core/grpc.framework",
@@ -433,6 +439,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDWebImage.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SVProgressHUD.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Spring.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/grpcpp.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/grpc.framework",
@@ -619,6 +626,15 @@
 				CDDABDD7223173010069BB9C /* Base */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		CDE178DA2271B251009F217F /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				CDE178D92271B251009F217F /* en */,
+				CDE178DB2271B25F009F217F /* sv */,
+			);
+			name = Localizable.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */

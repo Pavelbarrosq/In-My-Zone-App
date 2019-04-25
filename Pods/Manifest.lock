@@ -119,6 +119,7 @@ PODS:
     - SDWebImage/Core (= 4.4.6)
   - SDWebImage/Core (4.4.6)
   - Spring (1.0.6)
+  - SVProgressHUD (2.2.5)
 
 DEPENDENCIES:
   - Firebase/Auth
@@ -128,6 +129,7 @@ DEPENDENCIES:
   - Firebase/Storage
   - SDWebImage
   - Spring (from `https://github.com/MengTo/Spring.git`)
+  - SVProgressHUD (from `https://github.com/SVProgressHUD/SVProgressHUD.git`)
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
@@ -154,11 +156,16 @@ SPEC REPOS:
 EXTERNAL SOURCES:
   Spring:
     :git: https://github.com/MengTo/Spring.git
+  SVProgressHUD:
+    :git: https://github.com/SVProgressHUD/SVProgressHUD.git
 
 CHECKOUT OPTIONS:
   Spring:
     :commit: fafd0b2e8d4d46405bd86fa7ba84bb7f73a20b13
     :git: https://github.com/MengTo/Spring.git
+  SVProgressHUD:
+    :commit: e2a6aaa12321962cbe9fbecc370475f369c6566c
+    :git: https://github.com/SVProgressHUD/SVProgressHUD.git
 
 SPEC CHECKSUMS:
   BoringSSL-GRPC: 2a230d9cd93e7ce39916044f645cebb31f37dde6
@@ -181,7 +188,8 @@ SPEC CHECKSUMS:
   Protobuf: 7a877b7f3e5964e3fce995e2eb323dbc6831bb5a
   SDWebImage: 3f3f0c02f09798048c47a5ed0a13f17b063572d8
   Spring: 3d113f14575ef79aec9c5f906dfa4f5001c03254
+  SVProgressHUD: 1428aafac632c1f86f62aa4243ec12008d7a51d6
 
-PODFILE CHECKSUM: e825e9eb578b0618047a206bd99f2de7b5f29b06
+PODFILE CHECKSUM: 5d967bd3e4ca60274cdaca845fad5ab7f96c6be0
 
 COCOAPODS: 1.5.3

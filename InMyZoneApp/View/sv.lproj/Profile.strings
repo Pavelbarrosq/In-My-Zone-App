@@ -21,7 +21,8 @@
 "ghs-OJ-8nB.text" = "username";
 
 /* Class = "UIButton"; normalTitle = "Edit"; ObjectID = "lLM-yo-wcB"; */
-"lLM-yo-wcB.normalTitle" = "Redigera";
+//"lLM-yo-wcB.normalTitle" = "Redigera";
+"Q6e-sk-vKn.normalTitle" = "Logga Ut";
 
 /* Class = "UINavigationItem"; title = "Profile"; ObjectID = "x4g-ll-0Cs"; */
 "x4g-ll-0Cs.title" = "Profile";

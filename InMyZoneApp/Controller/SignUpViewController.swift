@@ -8,6 +8,7 @@
 
 import UIKit
 import Firebase
+import SVProgressHUD
 
 class SignUpViewController: UIViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
 
@@ -78,6 +79,7 @@ class SignUpViewController: UIViewController, UINavigationControllerDelegate, UI
     }
 
     @IBAction func signUpButton(_ sender: UIButton) {
+        SVProgressHUD.show(withStatus: "Loggin In..")
         if passwordTextField.text != repeatPassword.text {
             let alertController = UIAlertController(title: "Password do not match", message: "Retype passwords", preferredStyle: .alert)
             let alertAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
@@ -110,7 +112,9 @@ class SignUpViewController: UIViewController, UINavigationControllerDelegate, UI
                                             print(error!)
                                         } else {
                                             print("Document added with userInfo")
+                                            SVProgressHUD.showSuccess(withStatus: "Great!")
                                             self.performSegue(withIdentifier: "signUpToHome", sender: self)
+                                            
                                         }
                                     })
                                 }

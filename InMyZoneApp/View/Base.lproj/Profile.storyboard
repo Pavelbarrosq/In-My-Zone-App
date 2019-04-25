@@ -168,7 +168,7 @@
                                             <constraint firstAttribute="width" constant="102" id="Kch-v6-P9H"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="13"/>
-                                        <state key="normal" title="Edit">
+                                        <state key="normal">
                                             <color key="titleColor" red="0.58188301320000002" green="0.21569153669999999" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
                                         <connections>

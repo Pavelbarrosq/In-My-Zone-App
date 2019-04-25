@@ -9,6 +9,7 @@
 import UIKit
 import Firebase
 import AVFoundation
+import SVProgressHUD
 
 class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
@@ -38,6 +39,7 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
         db = Firestore.firestore()
         tableView.dataSource = self
         tableView.delegate = self
+        SVProgressHUD.dismiss()
         
 //        loadPost()
         
